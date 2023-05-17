@@ -8,6 +8,7 @@
 using namespace std;
 
 int main(){
+    cout<< "program started";
  wiringPiSetup () ;
 
 pinMode(pwm, OUTPUT) ;
