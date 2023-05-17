@@ -1,4 +1,5 @@
-#include <wiringPi.h>
+#include <includes/wiringPi.h>
+
 #include <iostream>
 
 #define pwm 4 // pin7
