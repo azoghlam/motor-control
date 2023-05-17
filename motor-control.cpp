@@ -11,7 +11,7 @@ int main(){
 
     std::cout << "program started";
 
-    // wiringPiSetup () ;
+    wiringPiSetup () ;
 
     // std::cout << "wiring pi setup done";
 
