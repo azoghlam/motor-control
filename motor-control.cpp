@@ -10,7 +10,7 @@ using namespace std;
 int main(){
     cout<< "program started";
  wiringPiSetup () ;
-
+    cout<< "wiring pi setup done";
 pinMode(pwm, OUTPUT) ;
 pinMode(IN1, OUTPUT) ;
 pinMode(IN2, OUTPUT) ;
