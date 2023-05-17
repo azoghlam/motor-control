@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-#define pwm 4 // pin7
-#define IN1 27// pin13
-#define IN2 17//pin11
+#define pwm 7 // pin7
+#define IN1 2// pin13 gpio27
+#define IN2 0//pin11 gpio 17
 
 // using namespace std;
 
