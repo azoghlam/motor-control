@@ -9,13 +9,13 @@
 
 int main(){
 
-    std::cout << "program started";
+    std::cout << "program started" <<std::endl;
 
     wiringPiSetup () ;
 
-    std::cout << "wiring pi setup done";
+    std::cout << "wiring pi setup done"<<std::endl;
 
-    // pinMode(pwm, OUTPUT) ;
+    pinMode(pwm, OUTPUT) ;
     // pinMode(IN1, OUTPUT) ;
     // pinMode(IN2, OUTPUT) ;
 
