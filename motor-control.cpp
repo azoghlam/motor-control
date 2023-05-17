@@ -16,8 +16,8 @@ int main(){
     std::cout << "wiring pi setup done"<<std::endl;
 
     pinMode(pwm, OUTPUT) ;
-    // pinMode(IN1, OUTPUT) ;
-    // pinMode(IN2, OUTPUT) ;
+    pinMode(IN1, OUTPUT) ;
+    pinMode(IN2, OUTPUT) ;
 
     // while (1)
     // {
