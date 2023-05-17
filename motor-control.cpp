@@ -21,11 +21,11 @@ int main(){
 
     while (1)
     {
-        std::cout<< "THIS HAPPENED0";
-        // digitalWrite(pwm, HIGH);
-        // digitalWrite(IN1, HIGH);
-        // digitalWrite(IN2, LOW) ;
-        // delay(1000);
+        std::cout<< "THIS HAPPENED"<<std::endl;
+        digitalWrite(pwm, HIGH);
+        digitalWrite(IN1, HIGH);
+        digitalWrite(IN2, LOW) ;
+        // delay(1);
 
 
         // digitalWrite(pwm, HIGH);
