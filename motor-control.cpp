@@ -27,13 +27,13 @@ int main(){
        
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-        delay(1);
+        delay(10);
 
 
-        // digitalWrite(pwm, HIGH);
-        // digitalWrite(IN1, LOW);
-        // digitalWrite(IN2, HIGH) ;
-        // delay(1000);
+        digitalWrite(pwm, HIGH);
+        digitalWrite(IN1, LOW);
+        digitalWrite(IN2, HIGH) ;
+        delay(10);
     }
 
     return 0;
