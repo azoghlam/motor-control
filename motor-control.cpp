@@ -5,18 +5,18 @@
 #define IN1 27// pin13
 #define IN2 17//pin11
 
-using namespace std;
+// using namespace std;
 
 int main(){
-    cout<< "program started";
+    std::cout << "program started";
  wiringPiSetup () ;
-    cout<< "wiring pi setup done";
+    std::cout << "wiring pi setup done";
 pinMode(pwm, OUTPUT) ;
 pinMode(IN1, OUTPUT) ;
 pinMode(IN2, OUTPUT) ;
  while (1)
  {
-    cout<< "THIS HAPPENED0";
+    std::cout<< "THIS HAPPENED0";
 digitalWrite(pwm, HIGH);
 digitalWrite(IN1, HIGH);
 digitalWrite(IN2, LOW) ;
