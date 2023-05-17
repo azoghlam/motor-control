@@ -8,30 +8,31 @@
 // using namespace std;
 
 int main(){
+
     std::cout << "program started";
- wiringPiSetup () ;
+
+    wiringPiSetup () ;
+
     std::cout << "wiring pi setup done";
-pinMode(pwm, OUTPUT) ;
-pinMode(IN1, OUTPUT) ;
-pinMode(IN2, OUTPUT) ;
- while (1)
- {
-    std::cout<< "THIS HAPPENED0";
-digitalWrite(pwm, HIGH);
-digitalWrite(IN1, HIGH);
-digitalWrite(IN2, LOW) ;
-delay(1000);
+
+    pinMode(pwm, OUTPUT) ;
+    pinMode(IN1, OUTPUT) ;
+    pinMode(IN2, OUTPUT) ;
+
+    while (1)
+    {
+        std::cout<< "THIS HAPPENED0";
+        digitalWrite(pwm, HIGH);
+        digitalWrite(IN1, HIGH);
+        digitalWrite(IN2, LOW) ;
+        delay(1000);
 
 
-digitalWrite(pwm, HIGH);
-digitalWrite(IN1, LOW);
-digitalWrite(IN2, HIGH) ;
-delay(1000);
+        digitalWrite(pwm, HIGH);
+        digitalWrite(IN1, LOW);
+        digitalWrite(IN2, HIGH) ;
+        delay(1000);
+    }
 
-
- }
-
-
-
-return 0 ;
+    return 0 ;
 }
