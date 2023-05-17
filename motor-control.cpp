@@ -27,7 +27,7 @@ int main(){
        
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-        // delay(1);
+        delay(1);
 
 
         // digitalWrite(pwm, HIGH);
