@@ -13,7 +13,7 @@ int main(){
 
     wiringPiSetup () ;
 
-    // std::cout << "wiring pi setup done";
+    std::cout << "wiring pi setup done";
 
     // pinMode(pwm, OUTPUT) ;
     // pinMode(IN1, OUTPUT) ;
