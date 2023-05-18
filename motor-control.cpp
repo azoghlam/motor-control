@@ -6,6 +6,10 @@
 #define IN1 2// pin13 gpio27
 #define IN2 0//pin11 gpio 17
 
+
+
+
+
 // using namespace std;
 
 int main(){
@@ -22,19 +26,21 @@ int main(){
 
     while (1)
     {
+
         std::cout<< "THIS HAPPENED"<<std::endl;
        
-        digitalWrite(pwm, HIGH);
+        pwmWrite(pwm, 100);
        
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-        delay(100);
+        delay(1000);
 
-
-        digitalWrite(pwm, HIGH);
         digitalWrite(IN1, LOW);
         digitalWrite(IN2, HIGH) ;
-        delay(100);
+        delay(1000);
+
+
+
     }
 
     return 0;
