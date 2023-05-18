@@ -32,10 +32,10 @@ int main(){
        // digitalWrite(pwm, HIGH);
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-        for(int x;x<256;x++){
+        for(int x;x<256;x+20){
             softPwmWrite(pwm, x);
             std::cout<< x <<std::endl;
-            delay(1000);
+            delay(500);
         }
         
         // softPwmWrite(pwm, 100);
