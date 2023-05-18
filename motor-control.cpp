@@ -31,12 +31,18 @@ int main(){
        
        // digitalWrite(pwm, HIGH);
         
+        
         softPwmWrite(pwm, 50);
-
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-      //  delay(1000);
-
+        delay(1000);
+        softPwmWrite(pwm, 100);
+        digitalWrite(IN1, HIGH);
+        digitalWrite(IN2, LOW) ;
+        delay(1000);
+        softPwmWrite(pwm, 255);
+        digitalWrite(IN1, HIGH);
+        digitalWrite(IN2, LOW) ;
     // digitalWrite(IN1, LOW);
       //  digitalWrite(IN2, HIGH) ;
        // delay(1000);
