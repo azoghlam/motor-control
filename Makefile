@@ -1,2 +1,3 @@
-gcc motor-control.cpp -lwiringPi -lstdc++ -o exec
-./exec
+main:
+	gcc motor-control.cpp -lwiringPi -lstdc++ -o exec
+	./exec
