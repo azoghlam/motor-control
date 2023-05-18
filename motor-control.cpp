@@ -1,5 +1,5 @@
 #include <wiringPi.h>
-
+#include <softPwm.h>
 #include <iostream>
 
 #define pwm 7 // pin7
@@ -23,14 +23,15 @@ int main(){
     pinMode(pwm, OUTPUT) ;
     pinMode(IN1, OUTPUT) ;
     pinMode(IN2, OUTPUT) ;
-
+    softPwmCreate(pwm, 0, 255);
     while (1)
     {
 
         std::cout<< "THIS HAPPENED"<<std::endl;
        
        // digitalWrite(pwm, HIGH);
-        pwmWrite(pwm, 1024);
+        
+        softPwmWrite(pwm, 150);
 
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
