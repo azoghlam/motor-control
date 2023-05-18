@@ -13,6 +13,7 @@
 // using namespace std;
 
 int main(){
+    int x=0;
 
     std::cout << "program started" <<std::endl;
 
@@ -24,6 +25,7 @@ int main(){
     pinMode(IN1, OUTPUT) ;
     pinMode(IN2, OUTPUT) ;
     softPwmCreate(pwm, 0, 255);
+
     while (1)
     {
 
@@ -32,12 +34,12 @@ int main(){
        // digitalWrite(pwm, HIGH);
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-        for(int x;x<256;x+20){
+        for(x; x<256; x+20){
             softPwmWrite(pwm, x);
             std::cout<< x <<std::endl;
             delay(500);
         }
-        
+        x=0;
         // softPwmWrite(pwm, 100);
         // digitalWrite(IN1, HIGH);
         // digitalWrite(IN2, LOW) ;
