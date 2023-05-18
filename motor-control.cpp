@@ -24,7 +24,7 @@ int main(){
     pinMode(pwm, OUTPUT) ;
     pinMode(IN1, OUTPUT) ;
     pinMode(IN2, OUTPUT) ;
-    softPwmCreate(pwm, 0, 255);
+    softPwmCreate(pwm, 0, 1024);
 
     while (1)
     {
@@ -34,7 +34,7 @@ int main(){
        // digitalWrite(pwm, HIGH);
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
-        for(x; x<256; x=x+20){
+        for(x; x<1025; x=x+20){
             softPwmWrite(pwm, x);
             std::cout<< x <<std::endl;
             delay(500);
