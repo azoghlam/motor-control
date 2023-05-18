@@ -29,8 +29,8 @@ int main(){
 
         std::cout<< "THIS HAPPENED"<<std::endl;
        
-        digitalWrite(pwm, HIGH);
-        pwmWrite(pwm, 100);
+       // digitalWrite(pwm, HIGH);
+        pwmWrite(pwm, 1024);
 
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
