@@ -27,26 +27,27 @@ int main(){
     while (1)
     {
 
-        std::cout<< "THIS HAPPENED"<<std::endl;
+        
        
        // digitalWrite(pwm, HIGH);
-        
-        
-        softPwmWrite(pwm, 50);
         digitalWrite(IN1, HIGH);
         digitalWrite(IN2, LOW) ;
+        for(int x;x<256;x++){
+            softPwmWrite(pwm, x);
+            std::cout<< x <<std::endl;
+        }
         delay(1000);
-        softPwmWrite(pwm, 100);
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW) ;
-        delay(1000);
-        softPwmWrite(pwm, 255);
-        digitalWrite(IN1, HIGH);
-        digitalWrite(IN2, LOW) ;
+        // softPwmWrite(pwm, 100);
+        // digitalWrite(IN1, HIGH);
+        // digitalWrite(IN2, LOW) ;
+        // delay(1000);
+        // softPwmWrite(pwm, 255);
+        // digitalWrite(IN1, HIGH);
+        // digitalWrite(IN2, LOW) ;
     // digitalWrite(IN1, LOW);
       //  digitalWrite(IN2, HIGH) ;
        // delay(1000);
-
+        
 
 
     }
