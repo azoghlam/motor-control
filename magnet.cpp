@@ -70,9 +70,9 @@
 
 int fd;
 
-int16_t magX, magY, magZ, mag_angle;
+int16_t magX, magY, magZ, mag_angle, elapsedtime, time, timeprev ;
 float pi = 3.14159265359 ; 
-float elapsedtime, time, timeprev ;
+
 
 
 
