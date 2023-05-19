@@ -80,10 +80,14 @@ float pi = 3.14159265359 ;
 
 
 void init() {
+    int error;
 
-    wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_A , 0x70);	 //write to Configuration Register A
-    wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_B , 0xa0);	//Write to Configuration Register B for gain
-    wiringPiI2CWriteReg8 (fd, HMC5883L_REG_MODE , 0);	        //Write to mode Register for selecting mode
+    error = wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_A , 0x70);	 //write to Configuration Register A
+    if(error != 0) cout<<"error config A"
+    error = wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_B , 0xa0);	//Write to Configuration Register B for gain
+    if(error != 0) cout<<"error config B"
+    error = wiringPiI2CWriteReg8 (fd, HMC5883L_REG_MODE , 0);	        //Write to mode Register for selecting mode
+    if(error != 0) cout<<"error config select mode"
 
 }
 
@@ -122,10 +126,10 @@ int main()
 
         mag_angle =  (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
-        // printf("%f \r",  mag_angle);
-        
-        std::cout<<"this";
-        
+        printf("%f \r",  mag_angle);
+        fflush(stdout);
+
+
         timeprev = millis();
     
     
