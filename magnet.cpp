@@ -71,6 +71,21 @@
 #define HMC5883L_STATUS_LOCK_BIT    1
 #define HMC5883L_STATUS_READY_BIT   0
 
+#define PWR_MGMT_1   0x6B
+#define SMPLRT_DIV   0x19
+#define CONFIG       0x1A
+#define GYRO_CONFIG  0x1B
+#define ACCEL_CONFIG 0x1c
+#define INT_ENABLE   0x38
+#define ACCEL_XOUT_H 0x3B
+#define ACCEL_YOUT_H 0x3D
+#define ACCEL_ZOUT_H 0x3F
+#define GYRO_XOUT_H  0x43
+#define GYRO_YOUT_H  0x45
+#define GYRO_ZOUT_H  0x47
+
+
+
 int fd;
 
 int16_t magX, magY, magZ, mag_angle;
@@ -91,6 +106,25 @@ void init() {
 
 }
 
+void init_MPU () {
+    wiringPiI2CWriteReg8 (fd, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
+    wiringPiI2CWriteReg8 (fd, CONFIG, 0x00);		/* Write to Configuration register */
+    wiringPiI2CWriteReg8 (fd, GYRO_CONFIG, 24);	/* Write to Gyro Configuration register */
+    // ^^^ was 24
+    // wiringPiI2CWriteReg8 (fd, ACCEL_CONFIG,0x00); 
+    wiringPiI2CWriteReg8 (fd, PWR_MGMT_1, 0x01);	/* Write to power management register */
+    wiringPiI2CWriteReg8 (fd, INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
+    // angleGyroX = 0;
+    // angleGyroY = 0;
+    // angleX = angleAccX;
+    // angleY = angleAccY;
+    // preInterval = millis();
+
+    // update();
+}
+
+
+
 short read_raw_data(int addr) {
 
     short high_byte, low_byte, value ;
@@ -104,6 +138,10 @@ short read_raw_data(int addr) {
 
 int main()
 {
+    fd = wiringPiI2CSetup(0x68); 
+
+    init_MPU();
+
     fd = wiringPiI2CSetup(HMC5883L_ADDRESS);
 
     float time;
