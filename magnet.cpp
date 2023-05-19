@@ -98,7 +98,9 @@ short read_raw_data(int addr) {
 int main()
 {
     fd = wiringPiI2CSetup(HMC5883L_ADDRESS);
- float elapsedtime, time, timeprev ;
+
+    unsigned int time;
+ float elapsedtime, timeprev ;
   // initialization function
         init();
 
