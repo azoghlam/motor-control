@@ -142,6 +142,6 @@ AK8963_CNTL  = 0x0A
 mag_sens = 4900.0 # magnetometer sensitivity: 4800 uT
 
 # start I2C driver
-bus = smbus.SMBus(1) # start comm with i2c bus
+bus = smbus2.SMBus(1) # start comm with i2c bus
 gyro_sens,accel_sens = MPU6050_start() # instantiate gyro/accel
 AK8963_start() # instantiate magnetometer
