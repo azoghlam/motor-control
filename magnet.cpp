@@ -1,5 +1,5 @@
-#include <wiringPi.h>
-#include <wiringPiI2C.h>
+#include <includes/wiringPi.h>
+#include <includes/wiringPiI2C.h>
 
 #include <iostream>
 #include <cmath>
@@ -72,7 +72,7 @@ int fd;
 
 int16_t magX, magY, magZ, mag_angle;
 float pi = 3.14159265359 ; 
-float elapsedtime, time, timeprev ;
+// float elapsedtime, time, timeprev ;
 
 
 
