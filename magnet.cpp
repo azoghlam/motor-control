@@ -83,11 +83,11 @@ void init() {
     int error;
 
     error = wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_A , 0x70);	 //write to Configuration Register A
-    if(error != 0) std::cout<<"error config A";
+    if(error == -1) std::cout<<"error config A";
     error = wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_B , 0xa0);	//Write to Configuration Register B for gain
-    if(error != 0) std::cout<<"error config B";
+    if(error == -1) std::cout<<"error config B";
     error = wiringPiI2CWriteReg8 (fd, HMC5883L_REG_MODE , 0);	        //Write to mode Register for selecting mode
-    if(error != 0) std::cout<<"error config select mode";
+    if(error == -1) std::cout<<"error config select mode";
 
 }
 
