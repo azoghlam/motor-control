@@ -94,7 +94,12 @@ int main()
     float mag_angle[2];
     float pi = 3.14159265359 ; 
    
-    while(1){   
+    while(1){
+        
+        timeprev = time ;
+        time = millis() ;
+        elapsedtime = (time - timeprev) / 1000 ; 
+
         // initialization function
         init();
         
@@ -103,7 +108,7 @@ int main()
         magY = read_raw_data(HMC5883L_REG_OUT_Y_M);
         magZ = read_raw_data(HMC5883L_REG_OUT_Z_M);
 
-        mag_angle[2] = atan2(magX, magY)  * 180 / pi ; 
+        mag_angle[2] = (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
     std::cout << mag_angle[2] <<std::endl;
     }
