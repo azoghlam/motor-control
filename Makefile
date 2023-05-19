@@ -1,3 +1,3 @@
 main:
-	gcc magnet.cpp -lwiringPi -lstdc++ -pthread -o exec
+	gcc magnet.cpp -lwiringPi -lstdc++ -pthread -lm -o exec
 	./exec
