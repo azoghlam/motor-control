@@ -89,7 +89,7 @@ short read_raw_data(int addr) {
 
 int main()
 {
-    int16_t magX, magY, magZ;
+    float magX, magY, magZ;
     float mag_angle[2];
     float pi = 3.14159265359 ; 
    
