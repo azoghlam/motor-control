@@ -124,7 +124,7 @@ int main()
 
         printf("%f \r",  mag_angle);
         
-        
+        std::cout<<"this";
         
         timeprev = millis();
     
