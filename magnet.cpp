@@ -110,7 +110,7 @@ int main()
         magY = read_raw_data(HMC5883L_REG_OUT_Y_M);
         magZ = read_raw_data(HMC5883L_REG_OUT_Z_M);
 
-        mag_angle[2] = (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
+        mag_angle[2] = mag_angle[2] + (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
     std::cout << magX <<std::endl;
     }
