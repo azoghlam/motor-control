@@ -7,7 +7,7 @@
 
 #define _USE_MATH_DEFINES
 
-#define HMC5883L_ADDRESS              0x0C
+#define HMC5883L_ADDRESS              0x1E
 
 #define HMC5883L_REG_CONFIG_A         0x00
 #define HMC5883L_REG_CONFIG_B         0x01
