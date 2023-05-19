@@ -98,13 +98,13 @@ short read_raw_data(int addr) {
 int main()
 {
     fd = wiringPiI2CSetup(HMC5883L_ADDRESS);
- 
+ float elapsedtime, time, timeprev ;
   // initialization function
         init();
 
     while(1){
 
-        float elapsedtime, time, timeprev ;
+
         timeprev = time ;
         time = millis() ;
         elapsedtime = (time - timeprev) / 1000 ; 
