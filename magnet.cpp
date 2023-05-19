@@ -7,7 +7,7 @@
 
 #define _USE_MATH_DEFINES
 
-#define HMC5883L_ADDRESS              0x0c
+#define HMC5883L_ADDRESS              0x1E
 
 #define HMC5883L_REG_CONFIG_A         0x00
 #define HMC5883L_REG_CONFIG_B         0x01
@@ -91,15 +91,14 @@ short read_raw_data(int addr) {
 
 int main()
 {
-    int16_t magX, magY, magZ;
-    float mag_angle[2];
+    int16_t magX, magY, magZ, mag_angle;
     float pi = 3.14159265359 ; 
     float elapsedtime, time, timeprev ;
   // initialization function
         init();
     while(1){
 
-        timeprev = time ;
+       
         time = millis() ;
         elapsedtime = (time - timeprev) / 1000 ; 
 
@@ -110,9 +109,12 @@ int main()
         magY = read_raw_data(HMC5883L_REG_OUT_Y_M);
         magZ = read_raw_data(HMC5883L_REG_OUT_Z_M);
 
-        mag_angle[2] =  (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
+        mag_angle =  (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
     std::cout <<  mag_angle[2] <<std::endl;
+     timeprev = time ;
+    
+    
     }
 }
 
