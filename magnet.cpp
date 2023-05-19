@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <cmath>
-#include <math.h>
+//#include <math.h>
 
 
 #define HMC5883L_ADDRESS              0x1E
