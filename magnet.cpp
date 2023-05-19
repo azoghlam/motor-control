@@ -10,7 +10,7 @@
 
 #define _USE_MATH_DEFINES
 
-#define HMC5883L_ADDRESS              0x1E
+#define HMC5883L_ADDRESS              0x0c
 
 #define HMC5883L_REG_CONFIG_A         0x00
 #define HMC5883L_REG_CONFIG_B         0x01
@@ -102,17 +102,16 @@ int main()
 {
     fd = wiringPiI2CSetup(HMC5883L_ADDRESS);
 
-    unsigned int time;
- float elapsedtime, timeprev ;
+    float time;
+    long timeprev;
+    float elapsedtime;
   // initialization function
         init();
 
     while(1){
 
 
-        timeprev = time ;
-        time = millis() ;
-        elapsedtime = (time - timeprev) / 1000 ; 
+        elapsedtime = (millis()- timeprev) / 1000 ; 
 
       
         
@@ -127,7 +126,7 @@ int main()
         
         
         
-      
+        timeprev = millis();
     
     
     }
