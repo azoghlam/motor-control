@@ -69,6 +69,7 @@
 #define HMC5883L_STATUS_READY_BIT   0
 
 
+
 void init() {
 
     wiringPiI2CWriteReg8 (HMC5883L_ADDRESS, HMC5883L_REG_CONFIG_A , 0x70);	 //write to Configuration Register A
@@ -93,9 +94,10 @@ int main()
     int16_t magX, magY, magZ;
     float mag_angle[2];
     float pi = 3.14159265359 ; 
-   
+    float elapsedtime, time, timeprev ;
+
     while(1){
-        
+
         timeprev = time ;
         time = millis() ;
         elapsedtime = (time - timeprev) / 1000 ; 
