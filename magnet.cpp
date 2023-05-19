@@ -94,18 +94,19 @@ int main()
     float mag_angle[2];
     float pi = 3.14159265359 ; 
    
-    
-    // initialization function
-    init();
-    
-    // Read Accelerometer raw value
-    magX = read_raw_data(HMC5883L_REG_OUT_X_M);
-    magY = read_raw_data(HMC5883L_REG_OUT_Y_M);
-    magZ = read_raw_data(HMC5883L_REG_OUT_Z_M);
+    while(1){   
+        // initialization function
+        init();
+        
+        // Read Accelerometer raw value
+        magX = read_raw_data(HMC5883L_REG_OUT_X_M);
+        magY = read_raw_data(HMC5883L_REG_OUT_Y_M);
+        magZ = read_raw_data(HMC5883L_REG_OUT_Z_M);
 
-    mag_angle[2] = atan2(magX, magY)  * 180 / pi ; 
+        mag_angle[2] = atan2(magX, magY)  * 180 / pi ; 
 
-   std::cout << mag_angle[2] <<std::endl;
+    std::cout << mag_angle[2] <<std::endl;
+    }
 }
 
 
