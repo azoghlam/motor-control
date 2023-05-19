@@ -111,7 +111,7 @@ int main()
 
         mag_angle =  (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
-    std::cout <<  mag_angle[2] <<std::endl;
+    std::cout <<  mag_angle <<std::endl;
      timeprev = time ;
     
     
