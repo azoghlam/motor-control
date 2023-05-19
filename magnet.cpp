@@ -68,21 +68,27 @@
 #define HMC5883L_STATUS_LOCK_BIT    1
 #define HMC5883L_STATUS_READY_BIT   0
 
+int fd;
+
+int16_t magX, magY, magZ, mag_angle;
+float pi = 3.14159265359 ; 
+float elapsedtime, time, timeprev ;
+
 
 
 void init() {
 
-    wiringPiI2CWriteReg8 (HMC5883L_ADDRESS, HMC5883L_REG_CONFIG_A , 0x70);	 //write to Configuration Register A
-    wiringPiI2CWriteReg8 (HMC5883L_ADDRESS, HMC5883L_REG_CONFIG_B , 0xa0);	//Write to Configuration Register B for gain
-    wiringPiI2CWriteReg8 (HMC5883L_ADDRESS, HMC5883L_REG_MODE , 0);	        //Write to mode Register for selecting mode
+    wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_A , 0x70);	 //write to Configuration Register A
+    wiringPiI2CWriteReg8 (fd, HMC5883L_REG_CONFIG_B , 0xa0);	//Write to Configuration Register B for gain
+    wiringPiI2CWriteReg8 (fd, HMC5883L_REG_MODE , 0);	        //Write to mode Register for selecting mode
 
 }
 
 short read_raw_data(int addr) {
 
     short high_byte, low_byte, value ;
-    high_byte = wiringPiI2CReadReg8(HMC5883L_ADDRESS, addr) ;
-    low_byte = wiringPiI2CReadReg8(HMC5883L_ADDRESS, addr+1) ;
+    high_byte = wiringPiI2CReadReg8(fd, addr) ;
+    low_byte = wiringPiI2CReadReg8(fd, addr+1) ;
     value = (high_byte << 8) | low_byte ;
     return value ;
 
@@ -91,11 +97,11 @@ short read_raw_data(int addr) {
 
 int main()
 {
-    int16_t magX, magY, magZ, mag_angle;
-    float pi = 3.14159265359 ; 
-    float elapsedtime, time, timeprev ;
+    fd = wiringPiI2CSetup(HMC5883L_ADDRESS);
+ 
   // initialization function
         init();
+
     while(1){
 
        
@@ -111,8 +117,11 @@ int main()
 
         mag_angle =  (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
-    std::cout <<  mag_angle <<std::endl;
-     timeprev = time ;
+        printf("%f \r",  mag_angle);
+        
+        
+        
+        timeprev = time ;
     
     
     }
