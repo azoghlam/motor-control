@@ -122,7 +122,7 @@ int main()
 
         mag_angle =  (atan2(magX, magY)  * 180 / pi)* elapsedtime ; 
 
-        printf("%f \r",  mag_angle);
+        // printf("%f \r",  mag_angle);
         
         std::cout<<"this";
         
