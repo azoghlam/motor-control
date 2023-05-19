@@ -70,9 +70,9 @@
 
 int fd;
 
-int16_t magX, magY, magZ, mag_angle, elapsedtime, time, timeprev ;
+int16_t magX, magY, magZ, mag_angle;
 float pi = 3.14159265359 ; 
-
+float elapsedtime, time, timeprev ;
 
 
 
@@ -104,7 +104,8 @@ int main()
 
     while(1){
 
-       
+        float elapsedtime, time, timeprev ;
+        timeprev = time ;
         time = millis() ;
         elapsedtime = (time - timeprev) / 1000 ; 
 
@@ -121,7 +122,7 @@ int main()
         
         
         
-        timeprev = time ;
+      
     
     
     }
