@@ -95,15 +95,15 @@ int main()
     float mag_angle[2];
     float pi = 3.14159265359 ; 
     float elapsedtime, time, timeprev ;
-
+  // initialization function
+        init();
     while(1){
 
         timeprev = time ;
         time = millis() ;
         elapsedtime = (time - timeprev) / 1000 ; 
 
-        // initialization function
-        init();
+      
         
         // Read Accelerometer raw value
         magX = read_raw_data(HMC5883L_REG_OUT_X_M);
