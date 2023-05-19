@@ -111,7 +111,7 @@ int main()
     float elapsedtime;
   // initialization function
         init();
-    delay(500);
+    delay(3000);
     while(1){
 
 
