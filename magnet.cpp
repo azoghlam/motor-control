@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <cmath>
-//#include <math.h>
+#include <math.h>
 
+#define _USE_MATH_DEFINES
 
 #define HMC5883L_ADDRESS              0x1E
 
@@ -89,7 +90,7 @@ short read_raw_data(int addr) {
 
 int main()
 {
-    float magX, magY, magZ;
+    int16_t magX, magY, magZ;
     float mag_angle[2];
     float pi = 3.14159265359 ; 
    
