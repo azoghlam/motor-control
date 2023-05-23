@@ -19,7 +19,6 @@
 
 float mag_sens = 4900.0; // magnetometer sensitivity: 4800 uT
 int fd;
-float mag_sens = 4900.0;
 int16_t magX, magY, magZ, mag_angle;
 float pi = 3.14159265359 ; 
 float resX, resY, resZ;
