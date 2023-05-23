@@ -16,7 +16,7 @@
 #define HZH          = 0x08
 #define AK8963_ST2   = 0x09
 #define AK8963_CNTL  = 0x0A
-float mag_sens = 4900.0 // magnetometer sensitivity: 4800 uT
+float mag_sens = 4900.0; // magnetometer sensitivity: 4800 uT
 
 void AK8963_start(){
     wiringPiI2CWriteReg8(AK8963_ADDR,AK8963_CNTL,0x00);
