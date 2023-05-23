@@ -63,7 +63,7 @@ float AK8963_conv(){
 
 int main(){
 
-    AK8963_start();
+    // AK8963_start();
     
 
 }
