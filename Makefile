@@ -1,7 +1,11 @@
-main:
-	gcc magnet.cpp -lwiringPi -lstdc++ -pthread -lm -o exec
+mag1:
+	gcc mag1.cpp -lwiringPi -lstdc++ -pthread -lm -o exec
 	./exec
 
-magnet:
-	gcc mag.cpp -lwiringPi -lstdc++ -pthread -lm -o exec
+mag2:
+	gcc mag2.cpp -lwiringPi -lstdc++ -pthread -lm -o exec
+	./exec
+
+mag3:
+	gcc mag3.cpp -lwiringPi -lstdc++ -pthread -lm -o exec
 	./exec

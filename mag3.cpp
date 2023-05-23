@@ -47,7 +47,7 @@ float AK8963_conv(){
         mag_z = AK8963_reader(HZH);
 
         //the next line is needed for AK8963
-        if bin(wiringPiI2CWriteReg8(AK8963_ADDR,AK8963_ST2))=='0b10000'{
+        if bin(wiringPiI2CWriteReg8(AK8963_ADDR,AK8963_ST2))==0x10{
             break;
         }
         loop_count+=1;
