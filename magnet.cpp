@@ -127,11 +127,11 @@ int AK8963_conv(){
     }
         
     //convert to acceleration in g and gyro dps
-    int16_t m_x = (magX/(2.0**15.0))*mag_sens;
-    int16_t m_y = (magY/(2.0**15.0))*mag_sens;
-    int16_t m_z = (magZ/(2.0**15.0))*mag_sens;
+    int16_t m_x = (magX/(2.0*15.0))*mag_sens;
+    int16_t m_y = (magY/(2.0*15.0))*mag_sens;
+    int16_t m_z = (magZ/(2.0*15.0))*mag_sens;
 
-    return m_x,m_y,m_z
+    return m_x,m_y,m_z;
 }
 
 void init() {
