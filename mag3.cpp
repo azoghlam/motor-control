@@ -53,9 +53,9 @@ int main(){
         magY = AK8963_reader(HYH);
         magZ = AK8963_reader(HZH);
 
-        std::cout << magX << std::endl;
-        std::cout << magY << std::endl;
-        std::cout << magZ << std::endl;
+        std::cout << "X: " <<magX << std::endl;
+        std::cout << "Y: " <<magY << std::endl;
+        std::cout << "Z: " <<magZ << std::endl;
     }
 
 }
