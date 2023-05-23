@@ -94,7 +94,7 @@ float pi = 3.14159265359 ;
 
 void AK8963_start(){
 
-    wiringPiI2CWriteReg8(HMC5883L_ADDRESS,HMC5883L_REG_CNTL,0x00)
+    wiringPiI2CWriteReg8(HMC5883L_ADDRESS,HMC5883L_REG_CNTL,0x00);
     delay(500);
     int AK8963_bit_res = 0b0001; // 0b0001 = 16-bit
     int AK8963_samp_rate = 0b0110; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
@@ -120,7 +120,7 @@ int AK8963_conv(){
         magZ = AK8963_reader(HMC5883L_REG_OUT_Z_M);
 
         // the next line is needed for AK8963
-        if (bin(wiringPiI2CWriteReg8(HMC5883L_ADDRESS,HMC5883L_REG_STATUS_B))=='0b10000'){
+        if (binary(wiringPiI2CWriteReg8(HMC5883L_ADDRESS,HMC5883L_REG_STATUS_B))=='0b10000'){
             break;
         }
         loop_count+=1;
@@ -166,9 +166,8 @@ void init_MPU () {
 
 int main()
 {
-//     fd = wiringPiI2CSetup(0x68); 
+        fd = wiringPiI2CSetup(HMC5883L_ADDRESS); 
 //     init_MPU();
-//     fd = wiringPiI2CSetup(HMC5883L_ADDRESS);
 //     float time;
 //     long timeprev;
 //     float elapsedtime;
