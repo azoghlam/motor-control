@@ -27,8 +27,8 @@ float resX, resY, resZ;
 void AK8963_start(){
     wiringPiI2CWriteReg8(AK8963_ADDR,AK8963_CNTL,0x00);
     delay(500);
-    int AK8963_bit_res = 0x01;  //0b0001 = 16-bit
-    int AK8963_samp_rate = 0x06; //0b0010 = 8 Hz, 0b0110 = 100 Hz
+    int AK8963_bit_res = 0b0001;  //0b0001 = 16-bit
+    int AK8963_samp_rate = 0b0010; //0b0010 = 8 Hz, 0b0110 = 100 Hz
     int AK8963_mode = (AK8963_bit_res <<4)+AK8963_samp_rate; //bit conversion
     wiringPiI2CWriteReg8(AK8963_ADDR,AK8963_CNTL,AK8963_mode);
     delay(500);
