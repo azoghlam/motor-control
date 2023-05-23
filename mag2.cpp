@@ -1,8 +1,8 @@
 // #include <wiringPi.h>
 // #include <wiringPiI2C.h>
 
-#include <includes/wiringPi.h>
-#include <includes/wiringPiI2C.h>
+#include "includes/wiringPi.h"
+#include "includes/wiringPiI2C.h"
 
 #include <iostream>
 #include <cmath>

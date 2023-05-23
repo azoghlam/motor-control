@@ -16,6 +16,19 @@
 #define HZH          0x08
 #define AK8963_ST2   0x09
 #define AK8963_CNTL  0x0A
+#define PWR_MGMT_1   0x6B
+#define SMPLRT_DIV   0x19
+#define CONFIG       0x1A
+#define GYRO_CONFIG  0x1B
+#define ACCEL_CONFIG 0x1c
+#define INT_ENABLE   0x38
+#define ACCEL_XOUT_H 0x3B
+#define ACCEL_YOUT_H 0x3D
+#define ACCEL_ZOUT_H 0x3F
+#define GYRO_XOUT_H  0x43
+#define GYRO_YOUT_H  0x45
+#define GYRO_ZOUT_H  0x47
+
 
 float mag_sens = 4900.0; // magnetometer sensitivity: 4800 uT
 int fd;
@@ -32,16 +45,22 @@ void AK8963_start(){
     int AK8963_mode = (AK8963_bit_res <<4)+AK8963_samp_rate; //bit conversion
     wiringPiI2CWriteReg8(AK8963_ADDR,AK8963_CNTL,AK8963_mode);
     delay(500);
+
+    wiringPiI2CWriteReg8 (fd, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
+    wiringPiI2CWriteReg8 (fd, CONFIG, 0x00);		/* Write to Configuration register */
+    wiringPiI2CWriteReg8 (fd, GYRO_CONFIG, 24);	/* Write to Gyro Configuration register */
+    // ^^^ was 24
+    // wiringPiI2CWriteReg8 (fd, ACCEL_CONFIG,0x00); 
+    wiringPiI2CWriteReg8 (fd, PWR_MGMT_1, 0x01);	/* Write to power management register */
+    wiringPiI2CWriteReg8 (fd, INT_ENABLE, 0x01);
 }
 
-short AK8963_reader(int reg){
-     short high_byte, low_byte, value;
-    //read magnetometer values
-    low_byte = wiringPiI2CReadReg8(AK8963_ADDR, reg - 1 );
-    high_byte = wiringPiI2CReadReg8(AK8963_ADDR, reg  );
-    //combine higha and low for unsigned bit value
-    value = ((high_byte << 8) | low_byte);
-    return value;
+short read_raw_data(int addr){
+	short high_byte,low_byte,value;
+	high_byte = wiringPiI2CReadReg8(fd, addr);
+	low_byte = wiringPiI2CReadReg8(fd, addr+1);
+	value = (high_byte << 8) | low_byte;
+	return value;
 }
 
 int main(){
@@ -49,9 +68,9 @@ int main(){
     AK8963_start();
 
     while (1){
-        magX = AK8963_reader(HXH);
-        magY = AK8963_reader(HYH);
-        magZ = AK8963_reader(HZH);
+        magX = read_raw_data(HXH);
+        magY = read_raw_data(HYH);
+        magZ = read_raw_data(HZH);
 
         std::cout << "X: " <<magX << std::endl;
         std::cout << "Y: " <<magY << std::endl;
