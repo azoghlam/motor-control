@@ -56,6 +56,7 @@ int main(){
         std::cout << "X: " <<magX << std::endl;
         std::cout << "Y: " <<magY << std::endl;
         std::cout << "Z: " <<magZ << std::endl;
+        delay(1000);
     }
 
 }
