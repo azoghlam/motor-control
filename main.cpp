@@ -111,6 +111,7 @@ int main () {
     while(1) {
     
         update();
+        std::cout<<rawMagX<<std::endl ;
     
     }
     return 0;
