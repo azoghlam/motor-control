@@ -62,6 +62,9 @@ int fd, tk;
 int16_t rawAccX, rawAccY, rawAccZ, rawTemp,
 rawGyroX, rawGyroY, rawGyroZ;
  
+ int16_t AK8963_bit_res, AK8963_samp_rate, AK8963_mode; 
+
+ 
 float gyroXoffset= 1.45;
 float gyroYoffset= 1.23;
 float gyroZoffset= -1.32;
@@ -205,6 +208,16 @@ void init_MPU () {
     // wiringPiI2CWriteReg8 (fd, ACCEL_CONFIG,0x00); 
     wiringPiI2CWriteReg8 (fd, PWR_MGMT_1, 0x01);	/* Write to power management register */
     wiringPiI2CWriteReg8 (fd, INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
+    wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1 ,0x00);
+    
+  
+    AK8963_bit_res = 0b0001 ; // 0b0001 = 16-bit
+    AK8963_samp_rate = 0b0110 ; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
+    AK8963_mode = (AK8963_bit_res <<8) + AK8963_samp_rate ;// bit conversion
+    wiringPiI2CWriteReg8(AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1,AK8963_mode);
+    
+   
+   
     angleGyroX = 0;
     angleGyroY = 0;
     angleX = angleAccX;
