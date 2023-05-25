@@ -71,12 +71,12 @@ void init_MPU () {
     wiringPiI2CWriteReg8 (Device_Address , INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
 
 
-    wiringPiI2CWriteReg8(  fd ,AK8963_CONTROL_1 ,0x00);
+    wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1 ,0x00);
     delay(100) ;
     AK8963_bit_res = 0x10 ; // 0b0001 = 16-bit
     AK8963_samp_rate = 0x06 ; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
     AK8963_mode = (AK8963_bit_res << 4) + AK8963_samp_rate ;// bit conversion
-    wiringPiI2CWriteReg8( fd ,AK8963_CONTROL_1,AK8963_mode);
+    wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
 
 
@@ -92,6 +92,7 @@ short  read_raw_data( int address)
 	high_byte = wiringPiI2CReadReg8(fd , address);
 	low_byte = wiringPiI2CReadReg8( fd , address-1);
 	value = ( high_byte << 8) | low_byte ;
+
  if(value > 32768)
         {
         value -= 65536;
@@ -135,7 +136,8 @@ int main () {
     while(1) {
     
         update();
-        std::cout<<rawMagX<<std::endl ;
+
+    std::cout<<rawMagX<<std::endl ;
     
     }
     return 0;
