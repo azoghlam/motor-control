@@ -90,6 +90,15 @@ short read_raw_data(int addr){
 	return value;
 }
 
+short read_AK_data(int add)
+{
+	short high_byte,low_byte,value;
+	high_byte = wiringPiI2CReadReg8(fd, add);
+	low_byte = wiringPiI2CReadReg8(fd, add-1);
+	value = (high_byte << 8) | low_byte;
+	return value;
+}
+
 void calcOffset(bool console, uint16_t delayBefore, uint16_t delayAfter) {
     float x = 0, y = 0, z = 0;
 	int16_t rx, ry, rz;
@@ -143,9 +152,10 @@ void update(){
 	rawGyroX = read_raw_data(GYRO_XOUT_H);
 	rawGyroY = read_raw_data(GYRO_YOUT_H);
 	rawGyroZ = read_raw_data(GYRO_ZOUT_H);
-    rawMagX = read_raw_data(AK8963_HXH);
-	rawMagY = read_raw_data(AK8963_HYH);
-	rawMagZ = read_raw_data(AK8963_HZH);	
+    
+    rawMagX = read_AK_data(AK8963_HXH);
+	rawMagY = read_AK_data(AK8963_HYH);
+	rawMagZ = read_AK_data(AK8963_HZH);	
 	
     temp = (rawTemp + 12412.0) / 340.0;
 
