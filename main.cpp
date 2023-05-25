@@ -127,7 +127,7 @@ void update()
 
 int main () {
 
-    MPU_addr = wiringPiI2CSetup(Device_Address); 
+    //MPU_addr = wiringPiI2CSetup(Device_Address); 
     AK_addr = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
     
     init_MPU () ;
