@@ -57,7 +57,7 @@
 
     int16_t rawMagX, rawMagY, rawMagZ;
 
-int fd;
+int fd, tk;
 
 int16_t rawAccX, rawAccY, rawAccZ, rawTemp,
 rawGyroX, rawGyroY, rawGyroZ;
@@ -93,8 +93,8 @@ short read_raw_data(int addr){
 short read_AK_data(int add)
 {
 	short high_byte,low_byte,value;
-	high_byte = wiringPiI2CReadReg8(fd, add);
-	low_byte = wiringPiI2CReadReg8(fd, add-1);
+	high_byte = wiringPiI2CReadReg8(tk, add);
+	low_byte = wiringPiI2CReadReg8(tk, add-1);
 	value = (high_byte << 8) | low_byte;
 	return value;
 }
@@ -216,6 +216,7 @@ void init_MPU () {
 
 int main() {
     fd = wiringPiI2CSetup(Device_Address); 
+    tk = wiringPiI2CSetup(AK8963_DEVICE_ADDR ); 
     calcOffset(false, 0, 0);
     init_MPU();
 	
