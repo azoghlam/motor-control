@@ -2,8 +2,7 @@
 # it will be used as the I2C controller and function harbor for the project 
 # refer to datasheet and register map for full explanation
 
-import smbus2
-import time
+import smbus2,time
 
 def MPU6050_start():
     # alter sample rate (stability)
@@ -79,7 +78,7 @@ def AK8963_start():
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
     time.sleep(0.1)
     AK8963_bit_res = 0b0001 # 0b0001 = 16-bit
-    AK8963_samp_rate =  0b0110 # 0b0010 = 8 Hz, 0b0110 = 100 Hz
+    AK8963_samp_rate = 0b0110 # 0b0010 = 8 Hz, 0b0110 = 100 Hz
     AK8963_mode = (AK8963_bit_res <<4)+AK8963_samp_rate # bit conversion
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,AK8963_mode)
     time.sleep(0.1)
