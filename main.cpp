@@ -90,8 +90,15 @@ short  read_raw_data( int address)
 {
 	short high_byte,low_byte,value;
 	high_byte = wiringPiI2CReadReg8(fd , address);
-	low_byte = wiringPiI2CReadReg8( fd , address+0);
+	low_byte = wiringPiI2CReadReg8( fd , address-1);
 	value = ( high_byte << 8) | low_byte ;
+
+    if( high_byte == -1 ) {
+      printf("Error: %s\n", strerror(errno));
+   }
+   if( low_byte == -1 ) {
+      printf("Error: %s\n", strerror(errno));
+   }
 
  if(value > 32768)
         {
@@ -118,7 +125,7 @@ void update()
 	rawMagZ = read_raw_data(AK8963_HZH);	
    
  
- 
+    rawMagX=rawMagX
             
     
        //preInterval = millis();
@@ -132,14 +139,14 @@ int main () {
     fd = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
     
     init_MPU () ;
-   
-    while(1) {
+   delay(50);
+    // while(1) {
     
         update();
 
-    std::cout<<rawMagY<<std::endl ;
+    std::cout<<rawMagX<<std::endl ;
     
-    }
+    // }
     return 0;
 }
 
