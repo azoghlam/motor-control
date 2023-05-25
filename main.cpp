@@ -20,7 +20,7 @@
 #define CONFIG              0x1A
 #define INT_ENABLE          0x38
 ////////////////////////////////
-#define AK8963_DEVICE_ADDR  0x0C 
+#define AK8963_DEVICE_ADDR  0x0c 
 #define AK8963_DEVICE_ID    0x00 
 #define AK8963_INFORMATION  0x01
 ////////////////////////////////
@@ -53,6 +53,7 @@
   float rawMagX, rawMagY, rawMagZ;
 
 int MPU_addr,  AK_addr ;
+
 
 int16_t AK8963_bit_res, AK8963_samp_rate, AK8963_mode; 
 float interval;
