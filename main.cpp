@@ -1,3 +1,22 @@
+//git branch 
+//git checkout 
+#include "includes/wiringPiI2C.h"
+#include "includes/wiringPi.h"
+
+#include <iostream>
+
+
+
+
+
+
+#define Device_Address      0x68	/*Device Address/Identifier for MPU6050*/
+#define PWR_MGMT_1          0x6B
+#define SMPLRT_DIV          0x19
+#define CONFIG              0x1A
+#define INT_ENABLE          0x38
+////////////////////////////////
+#define AK8963_DEVICE_ADDR  0x0C 
 #define AK8963_DEVICE_ID    0x00 
 #define AK8963_INFORMATION  0x01
 ////////////////////////////////
@@ -14,4 +33,89 @@
 #define AK8963_CONTROL_1    0x0A
 #define AK8963_CONTROL_2    0x0B
 ////////////////////////////////
-#define AK8963_SELFTEST     0x
+#define AK8963_SELFTEST     0x0C
+#define AK8963_TEST_1       0x0D
+#define AK8963_TEST_2       0x0E
+////////////////////////////////
+#define AK8963_I2CDIS       0x0F
+////////////////////////////////
+#define AK8963_ASAX         0x10
+#define AK8963_ASAY         0x11
+#define AK8963_ASAZ         0x12
+///////////////////////////////
+#define Magnetometer_Sensitivity_Scale_Factor ((float)0.15f)
+//////////////////////////////
+
+
+//int MPU_addr,  AK_addr ;
+int16_t rawMagX, rawMagY, rawMagZ;
+int16_t AK8963_bit_res, AK8963_samp_rate, AK8963_mode; 
+float interval;
+long preInterval;
+
+
+void init_MPU () {
+
+    wiringPiI2CWriteReg8 (Device_Address, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
+    wiringPiI2CWriteReg8 (Device_Address, CONFIG, 0x00);		/* Write to Configuration register */
+    wiringPiI2CWriteReg8 (Device_Address, PWR_MGMT_1, 0x01);	/* Write to power management register */
+    wiringPiI2CWriteReg8 (Device_Address, INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
+
+
+    wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1 ,0x00);
+    delay(100) ;
+    AK8963_bit_res = 0b0001; // 0b0001 = 16-bit
+    AK8963_samp_rate = 0b0010; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
+    AK8963_mode = (AK8963_bit_res <<4) + AK8963_samp_rate ;// bit conversion
+    wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1,AK8963_mode);
+    delay(100);
+    
+    rawMagX = 0;
+    rawMagY = 0;
+    rawMagZ = 0;
+    preInterval = millis();
+
+}
+
+
+
+
+short read_raw_data(int addr)
+
+{
+	short high_byte,low_byte,value;
+	high_byte = wiringPiI2CReadReg8(Device_Address, addr);
+	low_byte = wiringPiI2CReadReg8(Device_Address, addr-1);
+	value = (high_byte << 8) | low_byte;
+	return value;
+}
+
+
+
+
+void update()
+{
+	rawMagX = read_raw_data(AK8963_HXH);
+	rawMagY = read_raw_data(AK8963_HYH);
+	rawMagZ = read_raw_data(AK8963_HZH);	
+}
+
+
+int main () {
+
+  //  MPU_addr = wiringPiI2CSetup(Device_Address); 
+    //AK_addr = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
+    
+    init_MPU () ;
+   
+    while(1) {
+    
+        update();
+    
+    }
+    return 0;
+}
+
+
+
+
