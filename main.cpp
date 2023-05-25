@@ -65,10 +65,10 @@ float  x,y,z ;
 void init_MPU () {
 
 
-    wiringPiI2CWriteReg8 (MPU_addr, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
-    wiringPiI2CWriteReg8 (MPU_addr, CONFIG, 0x00);		/* Write to Configuration register */
-    wiringPiI2CWriteReg8 (MPU_addr, PWR_MGMT_1, 0x01);	/* Write to power management register */
-    wiringPiI2CWriteReg8 (MPU_addr, INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
+    wiringPiI2CWriteReg8 (Device_Address, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
+    wiringPiI2CWriteReg8 (Device_Address, CONFIG, 0x00);		/* Write to Configuration register */
+    wiringPiI2CWriteReg8 (Device_Address, PWR_MGMT_1, 0x01);	/* Write to power management register */
+    wiringPiI2CWriteReg8 (Device_Address, INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
 
 
     wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1 ,0x00);
@@ -85,7 +85,7 @@ void init_MPU () {
 
 
 
-short read_raw_data(int address)
+int  read_raw_data(int address)
 
 {
 	short high_byte,low_byte,value;
