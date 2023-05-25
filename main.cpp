@@ -91,7 +91,7 @@ int  read_raw_data(int address)
 	short high_byte,low_byte,value;
 	high_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , address);
 	low_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , address-1);
-	value = (low_byte << 8) |high_byte ;
+	value = ( high_byte<< 8) | low_byte ;
 
  
 
