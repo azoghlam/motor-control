@@ -76,7 +76,7 @@ void init_MPU () {
     AK8963_mode = (AK8963_bit_res <<4) + AK8963_samp_rate ;// bit conversion
     wiringPiI2CWriteReg8( AK_addr  ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
-    update();
+
 
 }
 
