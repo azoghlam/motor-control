@@ -3,6 +3,11 @@
 #include "includes/wiringPiI2C.h"
 #include "includes/wiringPi.h"
 
+
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+
 #include <iostream>
 #include <cmath>
 #include <math.h>
@@ -125,7 +130,7 @@ void update()
 	rawMagZ = read_raw_data(AK8963_HZH);	
    
  
-    rawMagX=rawMagX
+    rawMagX=rawMagX;
             
     
        //preInterval = millis();
