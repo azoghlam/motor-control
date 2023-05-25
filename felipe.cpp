@@ -201,9 +201,9 @@ void update(){
 }
 
 void init_MPU () {
-    wiringPiI2CWriteReg8 (fd, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
-    wiringPiI2CWriteReg8 (fd, CONFIG, 0x00);		/* Write to Configuration register */
-    wiringPiI2CWriteReg8 (fd, GYRO_CONFIG, 24);	/* Write to Gyro Configuration register */
+  //  wiringPiI2CWriteReg8 (fd, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
+   // wiringPiI2CWriteReg8 (fd, CONFIG, 0x00);		/* Write to Configuration register */
+    //wiringPiI2CWriteReg8 (fd, GYRO_CONFIG, 24);	/* Write to Gyro Configuration register */
     // ^^^ was 24
     // wiringPiI2CWriteReg8 (fd, ACCEL_CONFIG,0x00); 
     wiringPiI2CWriteReg8 (fd, PWR_MGMT_1, 0x01);	/* Write to power management register */
@@ -228,7 +228,7 @@ void init_MPU () {
 }
 
 int main() {
-    fd = wiringPiI2CSetup(Device_Address); 
+    //fd = wiringPiI2CSetup(Device_Address); 
     tk = wiringPiI2CSetup(AK8963_DEVICE_ADDR ); 
     calcOffset(false, 0, 0);
     init_MPU();
