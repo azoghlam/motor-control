@@ -143,8 +143,11 @@ void update(){
 	rawGyroX = read_raw_data(GYRO_XOUT_H);
 	rawGyroY = read_raw_data(GYRO_YOUT_H);
 	rawGyroZ = read_raw_data(GYRO_ZOUT_H);
-
-	temp = (rawTemp + 12412.0) / 340.0;
+    rawMagX = read_raw_data(AK8963_HXL);
+	rawMagY = read_raw_data(AK8963_HYL);
+	rawMagZ = read_raw_data(AK8963_HZL);	
+	
+    temp = (rawTemp + 12412.0) / 340.0;
 
 	accX = ((float)rawAccX) / 16384.0;
 	accY = ((float)rawAccY) / 16384.0;
@@ -208,7 +211,7 @@ int main() {
 	
 	while(1){
 		update();
-		printf("%f,%f,%f,%f,%f,%f,%f,%f,%f\r", angleX, angleY, angleZ,sX, sY, sZ,magX,magY,magZ);
+		printf("%f,%f,%f,%f,%f,%f,%f,%f,%f\r", angleX, angleY, angleZ,sX, sY, sZ,rawMagX ,rawMagY,rawMagZ);
 		fflush(stdout);
 	}
 	
