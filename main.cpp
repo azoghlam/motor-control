@@ -50,6 +50,7 @@
 #define Magnetometer_Sensitivity_Scale_Factor ((float)0.15f)
 //////////////////////////////
 
+    int16_t rawMagX, rawMagY, rawMagZ;
 
 int MPU_addr,  AK_addr ;
 
@@ -101,13 +102,10 @@ void update()
     millis() ;
     interval = (millis() - preInterval) * 0.001;
     
-    int16_t rawMagX, rawMagY, rawMagZ;
     rawMagX = read_raw_data(AK8963_HXH);
 	rawMagY = read_raw_data(AK8963_HYH);
 	rawMagZ = read_raw_data(AK8963_HZH);	
-    x += ((float)rawMagX) * interval ;
-    y += ((float)rawMagY)* interval ;
-    z += ((float)rawMagZ)* interval ;
+   
     
     
     preInterval = millis();
@@ -125,7 +123,7 @@ AK_addr = wiringPiI2CSetup(AK8963_DEVICE_ADDR);
     while(1) {
     
         update();
-        std::cout<<z<<std::endl ;
+        std::cout<<rawMagX<<std::endl ;
     
     }
     return 0;
