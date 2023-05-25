@@ -111,11 +111,7 @@ void update()
 	rawMagZ = read_raw_data(AK8963_HZH);	
    
  
-  def = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR,AK8963_STATUS_2);
-if (def == 0b10000)
-{
-def == 0 ;
-}
+ 
             
     
        //preInterval = millis();
