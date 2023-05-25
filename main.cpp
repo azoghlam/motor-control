@@ -50,7 +50,7 @@
 #define Magnetometer_Sensitivity_Scale_Factor ((float)0.15f)
 //////////////////////////////
 
-    int16_t rawMagX, rawMagY, rawMagZ;
+    float rawMagX, rawMagY, rawMagZ;
 
 int MPU_addr,  AK_addr ;
 
@@ -89,12 +89,12 @@ short read_raw_data(int addr)
 {
 	short high_byte,low_byte,value;
 	high_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , addr);
-	low_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , addr+1);
+	low_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , addr-1);
 	value = (high_byte << 8) | low_byte;
 
     if (value > 32768)
     {
-        value -= 65536;
+        value = 32768 -65536;
 
     } 
 
