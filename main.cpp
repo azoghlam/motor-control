@@ -74,7 +74,7 @@ void init_MPU () {
     delay(100) ;
     AK8963_bit_res = 0b0001 ; // 0b0001 = 16-bit
     AK8963_samp_rate = 0b0110 ; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
-    AK8963_mode = (AK8963_bit_res <<4) + AK8963_samp_rate ;// bit conversion
+    AK8963_mode = (AK8963_bit_res <<8) + AK8963_samp_rate ;// bit conversion
     wiringPiI2CWriteReg8(AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
 
@@ -102,7 +102,7 @@ short read_raw_data(int address)
 
 void update()
 {
-    int def;
+    
    // millis() ;
     //interval = (millis() - preInterval) * 0.001;
     
