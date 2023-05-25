@@ -95,7 +95,7 @@ short read_AK_data(int add)
 	short high_byte,low_byte,value;
 	high_byte = wiringPiI2CReadReg8(tk, add);
 	low_byte = wiringPiI2CReadReg8(tk, add-1);
-	value = (high_byte << 8) | low_byte;
+	value = (low_byte << 8) | high_byte;
 	return value;
 }
 
