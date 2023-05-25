@@ -73,7 +73,7 @@ void init_MPU () {
     AK8963_mode = (AK8963_bit_res <<4) + AK8963_samp_rate ;// bit conversion
     wiringPiI2CWriteReg8( AK_addr  ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
-    
+    update();
 
 }
 
@@ -84,8 +84,8 @@ short read_raw_data(int addr)
 
 {
 	short high_byte,low_byte,value;
-	high_byte = wiringPiI2CReadReg8(AK_addr , addr);
-	low_byte = wiringPiI2CReadReg8(AK_addr , addr-1);
+	high_byte = wiringPiI2CReadReg8(MPU_addr , addr);
+	low_byte = wiringPiI2CReadReg8(MPU_addr , addr-1);
 	value = (high_byte << 8) | low_byte;
 	return value;
 }
