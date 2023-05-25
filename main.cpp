@@ -90,7 +90,7 @@ short  read_raw_data( int address)
 {
 	short high_byte,low_byte,value;
 	high_byte = wiringPiI2CReadReg8(fd , address);
-	low_byte = wiringPiI2CReadReg8( fd , address-1);
+	low_byte = wiringPiI2CReadReg8( fd , address+0);
 	value = ( high_byte << 8) | low_byte ;
 
  if(value > 32768)
