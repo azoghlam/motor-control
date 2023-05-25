@@ -65,10 +65,10 @@ float  x,y,z ;
 void init_MPU () {
 
 
-    wiringPiI2CWriteReg8 (MPU_addr , SMPLRT_DIV, 0x07);	/* Write to sample rate register */
-    wiringPiI2CWriteReg8 (MPU_addr , CONFIG, 0x00);		/* Write to Configuration register */
-    wiringPiI2CWriteReg8 (MPU_addr , PWR_MGMT_1, 0x01);	/* Write to power management register */
-    wiringPiI2CWriteReg8 (MPU_addr , INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
+    wiringPiI2CWriteReg8 (Device_Address , SMPLRT_DIV, 0x07);	/* Write to sample rate register */
+    wiringPiI2CWriteReg8 (Device_Address , CONFIG, 0x00);		/* Write to Configuration register */
+    wiringPiI2CWriteReg8 (Device_Address , PWR_MGMT_1, 0x01);	/* Write to power management register */
+    wiringPiI2CWriteReg8 (Device_Address , INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
 
 
     wiringPiI2CWriteReg8(  fd ,AK8963_CONTROL_1 ,0x00);
@@ -135,7 +135,7 @@ int main () {
     while(1) {
     
         update();
-        std::cout<<read_raw_data(AK8963_HXH)<<std::endl ;
+        std::cout<<rawMagX<<std::endl ;
     
     }
     return 0;
