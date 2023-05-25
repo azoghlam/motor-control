@@ -20,7 +20,7 @@
 #define CONFIG              0x1A
 #define INT_ENABLE          0x38
 ////////////////////////////////
-#define AK8963_DEVICE_ADDR  0x0c 
+#define AK8963_DEVICE_ADDR  0x0C 
 #define AK8963_DEVICE_ID    0x00 
 #define AK8963_INFORMATION  0x01
 ////////////////////////////////
@@ -137,7 +137,7 @@ int main () {
     
         update();
 
-    std::cout<<rawMagX<<std::endl ;
+    std::cout<<rawMagY<<std::endl ;
     
     }
     return 0;
