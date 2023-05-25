@@ -48,13 +48,16 @@
 
 
 //int MPU_addr,  AK_addr ;
-int16_t rawMagX, rawMagY, rawMagZ;
+
 int16_t AK8963_bit_res, AK8963_samp_rate, AK8963_mode; 
 float interval;
 long preInterval;
+float  x,y,z ;
+
 
 
 void init_MPU () {
+
 
     wiringPiI2CWriteReg8 (Device_Address, SMPLRT_DIV, 0x07);	/* Write to sample rate register */
     wiringPiI2CWriteReg8 (Device_Address, CONFIG, 0x00);		/* Write to Configuration register */
@@ -70,10 +73,6 @@ void init_MPU () {
     wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
     
-    rawMagX = 0;
-    rawMagY = 0;
-    rawMagZ = 0;
-    preInterval = millis();
 
 }
 
@@ -95,9 +94,20 @@ short read_raw_data(int addr)
 
 void update()
 {
-	rawMagX = read_raw_data(AK8963_HXH);
+    millis() ;
+    interval = (millis() - preInterval) * 0.001;
+    
+    int16_t rawMagX, rawMagY, rawMagZ;
+    rawMagX = read_raw_data(AK8963_HXH);
 	rawMagY = read_raw_data(AK8963_HYH);
 	rawMagZ = read_raw_data(AK8963_HZH);	
+    x += ((float)rawMagX) * interval ;
+    y += ((float)rawMagY)* interval ;
+    z += ((float)rawMagZ)* interval ;
+    
+    
+    preInterval = millis();
+
 }
 
 
@@ -111,7 +121,7 @@ int main () {
     while(1) {
     
         update();
-        std::cout<<rawMagX<<std::endl ;
+        std::cout<<x<<std::endl ;
     
     }
     return 0;
