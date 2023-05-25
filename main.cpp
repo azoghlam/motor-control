@@ -122,7 +122,7 @@ int main () {
     while(1) {
     
         update();
-        std::cout<<x<<std::endl ;
+        std::cout<<z<<std::endl ;
     
     }
     return 0;
