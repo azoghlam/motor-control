@@ -54,7 +54,7 @@
 
 int MPU_addr,  AK_addr ;
 
-
+int fd ;
 int16_t AK8963_bit_res, AK8963_samp_rate, AK8963_mode; 
 float interval;
 long preInterval;
@@ -71,12 +71,12 @@ void init_MPU () {
     wiringPiI2CWriteReg8 (MPU_addr , INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
 
 
-    wiringPiI2CWriteReg8(  AK_addr  ,AK8963_CONTROL_1 ,0x00);
+    wiringPiI2CWriteReg8(  fd ,AK8963_CONTROL_1 ,0x00);
     delay(100) ;
     AK8963_bit_res = 0x10 ; // 0b0001 = 16-bit
     AK8963_samp_rate = 0x06 ; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
     AK8963_mode = (AK8963_bit_res << 4) + AK8963_samp_rate ;// bit conversion
-    wiringPiI2CWriteReg8( AK_addr  ,AK8963_CONTROL_1,AK8963_mode);
+    wiringPiI2CWriteReg8( fd ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
 
 
@@ -89,8 +89,8 @@ short  read_raw_data( int address)
 
 {
 	short high_byte,low_byte,value;
-	high_byte = wiringPiI2CReadReg8(AK_addr , address);
-	low_byte = wiringPiI2CReadReg8( AK_addr , address-1);
+	high_byte = wiringPiI2CReadReg8(fd , address);
+	low_byte = wiringPiI2CReadReg8( fd , address-1);
 	value = ( high_byte << 8) | low_byte ;
  if(value > 32768)
         {
@@ -128,7 +128,7 @@ void update()
 int main () {
 
     //MPU_addr = wiringPiI2CSetup(Device_Address); 
-    AK_addr = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
+    fd = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
     
     init_MPU () ;
    
