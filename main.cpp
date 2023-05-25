@@ -1,7 +1,10 @@
 //git branch 
 //git checkout 
-#include "includes/wiringPiI2C.h"
-#include "includes/wiringPi.h"
+#include <wiringPiI2C.h>
+#include <wiringPi.h>
+
+// #include "includes/wiringPiI2C.h"
+// #include "includes/wiringPi.h"
 
 
 #include <stdio.h>
@@ -76,12 +79,12 @@ void init_MPU () {
     wiringPiI2CWriteReg8 (Device_Address , INT_ENABLE, 0x01);	/*Write to interrupt enable register ???*/
 
 
-   // wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1 ,0x00);
+    wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR  ,AK8963_CONTROL_1 ,0x00);
     delay(100) ;
     AK8963_bit_res = 0b0001 ; // 0b0001 = 16-bit
     AK8963_samp_rate = 0b0110 ; // 0b0010 = 8 Hz, 0b0110 = 100 Hz
     AK8963_mode = (AK8963_bit_res << 4) + AK8963_samp_rate ;// bit conversion
-  //  wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR ,AK8963_CONTROL_1,AK8963_mode);
+   wiringPiI2CWriteReg8( AK8963_DEVICE_ADDR ,AK8963_CONTROL_1,AK8963_mode);
     delay(100);
 
 
@@ -130,7 +133,6 @@ void update()
 	rawMagZ = read_raw_data(AK8963_HZH);	
    
  
-    rawMagX=rawMagX;
             
     
        //preInterval = millis();
