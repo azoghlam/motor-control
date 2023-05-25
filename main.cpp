@@ -84,8 +84,8 @@ short read_raw_data(int addr)
 
 {
 	short high_byte,low_byte,value;
-	high_byte = wiringPiI2CReadReg8(MPU_addr, addr);
-	low_byte = wiringPiI2CReadReg8(MPU_addr, addr-1);
+	high_byte = wiringPiI2CReadReg8(AK_addr , addr);
+	low_byte = wiringPiI2CReadReg8(AK_addr , addr-1);
 	value = (high_byte << 8) | low_byte;
 	return value;
 }
