@@ -88,9 +88,16 @@ short read_raw_data(int addr)
 
 {
 	short high_byte,low_byte,value;
-	high_byte = wiringPiI2CReadReg8(MPU_addr , addr);
-	low_byte = wiringPiI2CReadReg8(MPU_addr , addr-1);
+	high_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , addr);
+	low_byte = wiringPiI2CReadReg8(AK8963_DEVICE_ADDR , addr-1);
 	value = (high_byte << 8) | low_byte;
+
+    if (value > 32768)
+    {
+        value -= 65536;
+
+    } 
+
 	return value;
 }
 
@@ -106,17 +113,17 @@ void update()
 	rawMagY = read_raw_data(AK8963_HYH);
 	rawMagZ = read_raw_data(AK8963_HZH);	
    
+ 
     
-    
-    preInterval = millis();
+       preInterval = millis();
 
 }
 
 
 int main () {
 
-  MPU_addr = wiringPiI2CSetup(Device_Address); 
-AK_addr = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
+    MPU_addr = wiringPiI2CSetup(Device_Address); 
+   // AK_addr = wiringPiI2CSetup(AK8963_DEVICE_ADDR); 
     
     init_MPU () ;
    
