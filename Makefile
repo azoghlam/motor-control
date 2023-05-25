@@ -1,5 +1,5 @@
 main:
-	gcc main.cpp -lwiringPi -lstdc++ -pthread -lm -y i2c-tools -o exec
+	gcc main.cpp -lwiringPi -lstdc++ -pthread -lm  -o exec
 	./exec
 
 t1:
