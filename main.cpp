@@ -130,7 +130,7 @@ int main () {
     while(1) {
     
         update();
-        std::cout<<rawMagZ<<std::endl ;
+        std::cout<<AK8963_HXH<<std::endl ;
     
     }
     return 0;
