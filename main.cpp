@@ -4,9 +4,10 @@
 #include "includes/wiringPi.h"
 
 #include <iostream>
+#include <cmath>
+#include <math.h>
 
-
-
+#define _USE_MATH_DEFINES
 
 
 
