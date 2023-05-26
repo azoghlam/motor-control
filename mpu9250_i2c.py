@@ -53,9 +53,7 @@ def read_raw_bits(register):
     
 def mpu6050_conv():
     
-    xangle = 0
-    yangle = 0
-    zangle = 0
+   
     angleX = 0
     angleY = 0
     angleZ = 0
@@ -131,7 +129,7 @@ def mpu6050_conv():
     
     previoustime = currenttime 
 
-    return  xangle, yangle,zangle
+    return  xangle, yangle,zangle,gyro_x,gyro_y, gyro_z
 
 
 
