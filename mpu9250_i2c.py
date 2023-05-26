@@ -114,9 +114,9 @@ def mpu6050_conv():
     gyro_y = read_raw_bits(GYRO_YOUT_H)
     gyro_z = read_raw_bits(GYRO_ZOUT_H)
         
-    #wx = ((float)rawGyroX) / 65.5;
-	#wy = ((float)rawGyroY) / 65.5;
-	#wz = ((float)rawGyroZ) / 65.5;
+    wx = gyro_x / 65.5
+    wy = gyro_y / 65.5
+    wz = gyro_z / 65.5
     #convert to acceleration in g and gyro dps
    # a_x = (acc_x/(2.0**15.0))*accel_sens
    # a_y = (acc_y/(2.0**15.0))*accel_sens
@@ -129,9 +129,9 @@ def mpu6050_conv():
     #temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
-    xangle =  0.96* ( (xangle +  gyro_x) *  elapsedtime ) + 0.04* angleX 
-    yangle =  0.96* ( (yangle +  gyro_y) *  elapsedtime ) + 0.04* angleY   
-    zangle =  0.96* ( (zangle +  gyro_z) *  elapsedtime ) + 0.04* angleZ
+    xangle =  0.96* ( (xangle +  wx) *  elapsedtime ) + 0.04* angleX 
+    yangle =  0.96* ( (yangle +  wy) *  elapsedtime ) + 0.04* angleY   
+    zangle =  0.96* ( (zangle +  wz) *  elapsedtime ) + 0.04* angleZ
 
   
     
