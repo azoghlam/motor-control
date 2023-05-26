@@ -124,9 +124,9 @@ def mpu6050_conv():
     #temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
-    #xangle =  0.96* ( (xangle +  gyro_x) *  elapsedtime ) + 0.04* angleX 
-    #yangle =  0.96* ( (yangle +  gyro_y) *  elapsedtime ) + 0.04* angleY   
-    #zangle =  0.96* ( (zangle +  gyro_z) *  elapsedtime ) + 0.04* angleZ
+    xangle =  0.96* ( (xangle +  gyro_x) *  elapsedtime ) + 0.04* angleX 
+    yangle =  0.96* ( (yangle +  gyro_y) *  elapsedtime ) + 0.04* angleY   
+    zangle =  0.96* ( (zangle +  gyro_z) *  elapsedtime ) + 0.04* angleZ
 
 
     
@@ -136,7 +136,7 @@ def mpu6050_conv():
     
     previoustime = currenttime 
 
-    return  angleX, angleY,angleZ,gyro_x,gyro_y, gyro_z
+    return xangle, yangle ,zangle,gyro_x,gyro_y, gyro_z
 
 
 
