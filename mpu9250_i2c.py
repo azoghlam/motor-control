@@ -60,7 +60,11 @@ def mpu6050_conv():
     angleTX = 0
     angleTY = 0
     angleTZ = 0
-    
+    currenttime = 0
+    previoustime = 0
+    elapsedtime =0
+
+
     currenttime = time()
     elapsedtime = currenttime - previoustime
     # raw acceleration bits
