@@ -70,7 +70,7 @@ def mpu6050_conv():
 
     currenttime = time.time()
    
-    elapsedtime = (currenttime - previoustime) * 0.001 
+    elapsedtime = (currenttime - previoustime) * 0.000001 
      
      
     #raw acceleration bits
