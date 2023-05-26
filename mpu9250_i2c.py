@@ -50,6 +50,9 @@ def read_raw_bits(register):
     return value
 
 def mpu6050_conv():
+    
+
+
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
     acc_y = read_raw_bits(ACCEL_YOUT_H)
@@ -68,12 +71,14 @@ def mpu6050_conv():
     #angleAccZ = math.atan2 (math.sqrt( acc_x  *  acc_x + acc_y * acc_y), acc_z) * 180 / math.pi
 
 
-   # angleX = 0.98*angleX + 0.02*angleAccX
-   # angleY = 0.98*angleY + 0.02*angleAccY
+    angleX = 0.98*angleX + 0.02*angleAccX
+    angleY = 0.98*angleY + 0.02*angleAccY
 
     #  raw temp bits
 ##    t_val = read_raw_bits(TEMP_OUT_H) # uncomment to read temp
     
+    #interval = (millis() - preInterval) * 0.001;
+
     # raw gyroscope bits
     gyro_x = read_raw_bits(GYRO_XOUT_H)
     gyro_y = read_raw_bits(GYRO_YOUT_H)
@@ -89,14 +94,14 @@ def mpu6050_conv():
     w_y = (gyro_y/(2.0**15.0))*gyro_sens
     w_z = (gyro_z/(2.0**15.0))*gyro_sens
 
-##    temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
+    #temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
-    #angleAccX = angleX 
-    #angleAccY = angleY
+    angleAccX = angleX 
+    angleAccY = angleY
+    #preInterval = millis();
 
-
-    return angleAccX,angleAccY ,angleAccZ,w_x,w_y, w_z
+    return angleX,angleY ,angleAccZ,w_x,w_y, w_z
 
 
 
