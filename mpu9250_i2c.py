@@ -143,7 +143,7 @@ def mpu6050_conv():
     
     previoustime = currenttime 
 
-    return xangle, yangle ,zangle, wx, wy, wz
+    return angleX, angleY ,angleZ, wx, wy, wz
 
 
 
