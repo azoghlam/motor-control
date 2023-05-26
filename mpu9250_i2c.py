@@ -80,6 +80,9 @@ def mpu6050_conv():
 ##    t_val = read_raw_bits(TEMP_OUT_H) # uncomment to read temp
     
     #interval = (millis() - preInterval) * 0.001;
+    #preInterval = millis();
+
+
 
     # raw gyroscope bits
     gyro_x = read_raw_bits(GYRO_XOUT_H)
@@ -99,8 +102,8 @@ def mpu6050_conv():
     #temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
-    #preInterval = millis();
-    
+  
+
     angleX = angleAccX
     angleY = angleAccY
     angleZ = angleAccZ
