@@ -111,7 +111,7 @@ def mpu6050_conv():
     
 
 
-    return  angleAccX,angleAccY,angleAccZ,gyro_x,gyro_y,gyro_z
+    return  angleX,angleY,angleZ,gyro_x,gyro_y,gyro_z
 
 
 
