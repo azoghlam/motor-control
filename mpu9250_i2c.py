@@ -180,9 +180,9 @@ def AK8963_conv():
         loop_count+=1
         
     #convert to acceleration in g and gyro dps
-    m_x = mag_x / 4900.0
-    m_y = mag_y / 4900.0
-    m_z = mag_z / 4900.0
+    m_x = (mag_x/(2.0**15.0))*mag_sens
+    m_y = (mag_y/(2.0**15.0))*mag_sens
+    m_z = (mag_z/(2.0**15.0))*mag_sens
 
     return m_x,m_y,m_z
     
