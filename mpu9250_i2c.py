@@ -58,7 +58,7 @@ def mpu6050_conv():
     
     angleAccX = math.atan2 (acc_y, math.sqrt( acc_z *  acc_z  +acc_x * acc_x)) * 180 / 3.141592
     angleAccY = math.atan2 (acc_x, math.sqrt( acc_z  *  acc_z  + acc_y * acc_y)) * 180 / 3.141592
-    angleAccY = math.atan2 (math.sqrt( acc_x  *  acc_x  + acc_y * acc_y), acc_z) * 180 / 3.141592
+    angleAccZ = math.atan2 (math.sqrt( acc_x  *  acc_x  + acc_y * acc_y), acc_z) * 180 / 3.141592
     
    # angleX = 0.98*angleX + 0.02*angleAccX
    # angleY = 0.98*angleY + 0.02*angleAccY
@@ -88,7 +88,7 @@ def mpu6050_conv():
     #angleAccY = angleY
 
 
-    return  angleAccX,angleAccY
+    return  angleAccX,angleAccY, angleAccZ
 
 
 
