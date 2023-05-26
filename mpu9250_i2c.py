@@ -85,7 +85,8 @@ def mpu6050_conv():
     
     angleAccX = angleX 
     angleAccY = angleY
-   
+    print(angleX)
+
     return  angleX,angleY
 
 
