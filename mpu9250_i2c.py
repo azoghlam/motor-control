@@ -53,21 +53,17 @@ def read_raw_bits(register):
     
 def mpu6050_conv():
     
-    xangle = 0
-    yangle = 0
-    zangle = 0
+
     angleX = 0
     angleY = 0
     angleZ = 0
     angleTX = 0
     angleTY = 0
     angleTZ = 0
-    currenttime = 0
-    previoustime = 0
-    elapsedtime =0
+  
 
 
-    currenttime = time()
+    currenttime = time.time()
     elapsedtime = currenttime - previoustime
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
