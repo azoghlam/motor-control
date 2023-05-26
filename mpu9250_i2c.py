@@ -48,13 +48,14 @@ def read_raw_bits(register):
     if(value > 32768):
         value -= 65536
     return value
-
+    
 def mpu6050_conv():
     
   
-    angleX = 0
-    angleY = 0
-    angleZ = 0
+    
+    angleX = angleAccX
+    angleY = angleAccY
+    angleZ = angleAccZ
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
     acc_y = read_raw_bits(ACCEL_YOUT_H)
@@ -105,9 +106,7 @@ def mpu6050_conv():
     
   
 
-    angleX = angleAccX
-    angleY = angleAccY
-    angleZ = angleAccZ
+
 
 
     return angleX,angleY,angleZ,gyro_x,gyro_y,gyro_z
