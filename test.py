@@ -11,7 +11,7 @@ while 1:
         continue
     
     print('{}'.format('-'*30))
-    print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z {2:2.2f}= '.format(ax ,ay ,az))
+    print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f} '.format(ax ,ay ,az))
     # print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z {2:2.2f}= '.format(ax,ay,az))
     print('gyro [dps]:  x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(wx,wy,wz))
     # print('mag [uT]:   x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(mx,my,mz))
