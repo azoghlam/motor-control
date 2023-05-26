@@ -53,9 +53,7 @@ def read_raw_bits(register):
     
 def mpu6050_conv():
     
-    xangle = 0  
-    yangle = 0
-    zangle = 0
+   
     angleX = 0
     angleY = 0
     angleZ = 0
