@@ -75,13 +75,11 @@ def mpu6050_conv():
    # angleAccZ =  0.98 * angleZ +0.1 * (math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi)
 
 
-    angleX = 0.9*angleX + 0.1*angleAccX
-    angleY = 0.9*angleY + 0.1*angleAccY
-    angleZ = 0.9*angleZ + 0.1*angleAccZ
+    angleX = 0.92*angleX + 0.08*angleAccX
+    angleY = 0.92*angleY + 0.08*angleAccY
+    angleZ = 0.92*angleZ + 0.08*angleAccZ
     
-    angleX = angleAccX
-    angleY = angleAccY
-    angleZ = angleAccZ
+
     #  raw temp bits
     #t_val = read_raw_bits(TEMP_OUT_H) # uncomment to read temp
     #interval = (millis() - preInterval) * 0.001;
@@ -108,7 +106,9 @@ def mpu6050_conv():
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
     
-  
+    angleX = angleAccX
+    angleY = angleAccY
+    angleZ = angleAccZ
 
 
 
