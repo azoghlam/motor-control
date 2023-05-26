@@ -56,9 +56,9 @@ def mpu6050_conv():
     acc_z = read_raw_bits(ACCEL_ZOUT_H)
 
     
-    angleAccX = math.atan2 (acc_y, math.sqrt( acc_z *  acc_z  +acc_x * acc_x)) * 180 / 3.141592
-    angleAccY = math.atan2 (acc_x, math.sqrt( acc_z  *  acc_z  + acc_y * acc_y)) * 180 / 3.141592
-    angleAccZ = math.atan2 (math.sqrt( acc_x  *  acc_x  + acc_y * acc_y), acc_z) * 180 / 3.141592
+    angleAccX = math.atan2 (acc_y, math.sqrt( acc_z *  acc_z  +acc_x * acc_x)) * 180 / math.pi
+    angleAccY = math.atan2 (acc_x, math.sqrt( acc_z  *  acc_z  + acc_y * acc_y)) * 180 / math.pi
+    angleAccZ = math.atan2 (math.sqrt( acc_x  *  acc_x  + acc_y * acc_y), acc_z) * 180 / math.pi
     
    # angleX = 0.98*angleX + 0.02*angleAccX
    # angleY = 0.98*angleY + 0.02*angleAccY
