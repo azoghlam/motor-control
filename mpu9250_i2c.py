@@ -53,7 +53,9 @@ def mpu6050_conv():
     
    # angleX= angleAccX 
    # angleY= angleAccY 
-
+    angleX = 0
+    angleY = 0
+    angleZ = 0
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
     acc_y = read_raw_bits(ACCEL_YOUT_H)
@@ -99,9 +101,9 @@ def mpu6050_conv():
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
     #preInterval = millis();
-    angleX = angleAccX
-    angleY = angleAccY
-    angleZ = angleAccZ
+   # angleX = angleAccX
+   # angleY = angleAccY
+   # angleZ = angleAccZ
 
 
     return angleAccX,angleAccY, angleAccZ,gyro_x,gyro_y,gyro_z
