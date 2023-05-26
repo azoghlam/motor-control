@@ -73,7 +73,7 @@ def mpu6050_conv():
 
     angleX = 0.98*angleX + 0.02*angleAccX
     angleY = 0.98*angleY + 0.02*angleAccY
-
+    angleZ = 0.98*angleZ + 0.02*angleAccZ
     #  raw temp bits
 ##    t_val = read_raw_bits(TEMP_OUT_H) # uncomment to read temp
     
@@ -101,7 +101,7 @@ def mpu6050_conv():
     angleAccY = angleY
     #preInterval = millis();
 
-    return angleX,angleY ,angleAccZ,w_x,w_y, w_z
+    return angleX,angleY,angleZ,w_x,w_y, w_z
 
 
 
