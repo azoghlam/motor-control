@@ -184,7 +184,9 @@ def AK8963_conv():
     m_y = (mag_y/(2.0**15.0))*mag_sens
     m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    return m_x,m_y,m_z
+    heading = math.atan2(mag_y, mag_x) * 180 / math.pi
+
+    return m_x,m_y,m_z,heading
     
 # MPU6050 Registers
 MPU6050_ADDR = 0x68
