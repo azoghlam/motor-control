@@ -63,7 +63,9 @@ def mpu6050_conv():
     angleTY = 0
     angleTZ = 0
   
-
+    currenttime = 0
+    elapsedtime = 0
+    previoustime = 0
 
     currenttime = time.time()
     elapsedtime = currenttime - previoustime
