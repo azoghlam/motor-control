@@ -74,8 +74,8 @@ def mpu6050_conv():
 
 
     angleX = 0.9*angleX + 0.1*angleAccX
-    angleY = 0.98*angleY + 0.1*angleAccY
-    angleZ = 0.98*angleZ + 0.1*angleAccZ
+    angleY = 0.9*angleY + 0.1*angleAccY
+    angleZ = 0.9*angleZ + 0.1*angleAccZ
     
     
     #  raw temp bits
