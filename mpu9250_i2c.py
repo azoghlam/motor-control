@@ -70,7 +70,7 @@ def mpu6050_conv():
 
     currenttime = time.time()
    
-    elapsedtime = (currenttime - previoustime) * 0.000001 
+    elapsedtime = currenttime - previoustime 
      
      
     #raw acceleration bits
@@ -114,9 +114,9 @@ def mpu6050_conv():
     gyro_y = read_raw_bits(GYRO_YOUT_H)
     gyro_z = read_raw_bits(GYRO_ZOUT_H)
         
-    wx = gyro_x / 65.5
-    wy = gyro_y / 65.5
-    wz = gyro_z / 65.5
+    wx += gyro_x / 65.5
+    wy += gyro_y / 65.5
+    wz += gyro_z / 65.5
     #convert to acceleration in g and gyro dps
    # a_x = (acc_x/(2.0**15.0))*accel_sens
    # a_y = (acc_y/(2.0**15.0))*accel_sens
