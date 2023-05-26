@@ -91,7 +91,7 @@ def mpu6050_conv():
     #angleAccY = angleY
 
 
-    return  ax,ay,az
+    return  acc_x,acc_y ,acc_z
 
 
 
