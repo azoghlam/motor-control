@@ -5,6 +5,10 @@
 import smbus2,time
 import math
 
+angleX = 0
+angleY = 0
+angleZ = 0
+    
 def MPU6050_start():
     # alter sample rate (stability)
     samp_rate_div = 0 # sample rate = 8 kHz/(1+samp_rate_div)
@@ -52,10 +56,7 @@ def read_raw_bits(register):
 def mpu6050_conv():
     
     
-    angleX = 0
-    angleY = 0
-    angleZ = 0
-    
+   
     
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
