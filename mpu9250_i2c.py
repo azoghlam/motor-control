@@ -74,13 +74,11 @@ def mpu6050_conv():
      
      
     #raw acceleration bits
-  
-
-
 
     acc_x = read_raw_bits(ACCEL_XOUT_H)
     acc_y = read_raw_bits(ACCEL_YOUT_H)
     acc_z = read_raw_bits(ACCEL_ZOUT_H)
+
 
     ax = acc_x/16384.0
     ay = acc_y/16384.0
@@ -114,9 +112,9 @@ def mpu6050_conv():
     gyro_y = read_raw_bits(GYRO_YOUT_H)
     gyro_z = read_raw_bits(GYRO_ZOUT_H)
         
-    wx = gyro_x / 65.5
-    wy = gyro_y / 65.5
-    wz = gyro_z / 65.5
+    wx = gyro_x / 131.0
+    wy = gyro_y / 131.0
+    wz = gyro_z / 131.0 
 
 
     #convert to acceleration in g and gyro dps
