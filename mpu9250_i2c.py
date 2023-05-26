@@ -83,9 +83,9 @@ def mpu6050_conv():
 ##    temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
     #return a_x,a_y,a_z,w_x,w_y,w_z
     
-    angleAccX = angleX 
-    angleAccY = angleY
-    print(angleX)
+    #angleAccX = angleX 
+    #angleAccY = angleY
+
 
     return  angleX,angleY
 
