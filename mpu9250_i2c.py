@@ -66,7 +66,7 @@ def mpu6050_conv():
     previoustime = 0
 
     currenttime = time.time()
-    print(currenttime)
+   
     elapsedtime = currenttime - previoustime
      
      
@@ -128,7 +128,7 @@ def mpu6050_conv():
     yangle =  0.96* ( (yangle +  gyro_y) *  elapsedtime ) + 0.04* angleY   
     zangle =  0.96* ( (zangle +  gyro_z) *  elapsedtime ) + 0.04* angleZ
 
-
+    print(xangle)
     
     angleTX = angleX
     angleTY = angleY
