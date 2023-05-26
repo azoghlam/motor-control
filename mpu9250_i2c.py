@@ -52,9 +52,9 @@ def read_raw_bits(register):
 def mpu6050_conv():
     
     
-    angleX = int
-    angleY = int
-    angleZ = int
+    angleX = 0
+    angleY = 0
+    angleZ = 0
     
     angleX = angleAccX
     angleY = angleAccY
