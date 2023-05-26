@@ -64,21 +64,22 @@ def mpu6050_conv():
     ay = acc_y/16384.0
     az = acc_z/16384.0
 
-   # angleAccX = math.atan2 ( ay , math.sqrt( az *  az  +ax * ax)) * 180 / math.pi
-   # angleAccY = math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * 180 / math.pi
-   # angleAccZ = math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi
+    angleAccX = math.atan2 ( ay , math.sqrt( az *  az  +ax * ax)) * 180 / math.pi
+    angleAccY = math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * 180 / math.pi
+    angleAccZ = math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi
     
-    angleAccX =  0.98 * angleX +0.1 * (math.atan2 ( ay , math.sqrt( az *  az  +ax * ax)) * 180 / math.pi)
-    angleAccY =  0.98 * angleY +0.1 * (math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * 180 / math.pi)
-    angleAccZ =  0.98 * angleZ +0.1 * (math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi)
+   # angleAccX =  0.98 * angleX +0.1 * (math.atan2 ( ay , math.sqrt( az *  az  +ax * ax)) * 180 / math.pi)
+   # angleAccY =  0.98 * angleY +0.1 * (math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * 180 / math.pi)
+   # angleAccZ =  0.98 * angleZ +0.1 * (math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi)
 
 
-   # angleX = 0.98*angleX + 0.02*angleAccX
-   # angleY = 0.98*angleY + 0.02*angleAccY
-   # angleZ = 0.98*angleZ + 0.02*angleAccZ
+    angleX = 0.9*angleX + 0.1*angleAccX
+    angleY = 0.98*angleY + 0.1*angleAccY
+    angleZ = 0.98*angleZ + 0.1*angleAccZ
+    
+    
     #  raw temp bits
-##    t_val = read_raw_bits(TEMP_OUT_H) # uncomment to read temp
-    
+    #t_val = read_raw_bits(TEMP_OUT_H) # uncomment to read temp
     #interval = (millis() - preInterval) * 0.001;
     #preInterval = millis();
 
