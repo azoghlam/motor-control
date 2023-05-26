@@ -2,9 +2,9 @@
 # it will be used as the I2C controller and function harbor for the project 
 # refer to datasheet and register map for full explanation
 
-import smbus2,time
+import smbus2
 import math
-
+import time
 
     
 def MPU6050_start():
@@ -53,12 +53,7 @@ def read_raw_bits(register):
     
 def mpu6050_conv():
     
-    angleX = 0
-    angleX = 0
-    angleX = 0
-    angleTX = 0
-    angleTY = 0
-    angleTZ = 0
+  
 
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
@@ -69,19 +64,19 @@ def mpu6050_conv():
     ay = acc_y/16384.0
     az = acc_z/16384.0
 
-    angleX = 0.92*angleTX + 0.08*ax
-    angleY = 0.92*angleTY + 0.08*ay
-    angleZ = 0.92*angleTZ + 0.08*az
+    
 
 
-    angleAccX = math.atan2 (angleY, math.sqrt( angleZ *  angleZ  +angleX * angleX)) * 180 / math.pi
-    angleAccY = math.atan2 (angleX, math.sqrt( angleZ *  angleZ + angleY * angleY)) * -180 / math.pi
-    angleAccZ = math.atan2 (math.sqrt( angleX  *  angleX + angleY * angleY), angleZ) * 180 / math.pi
+    angleAccX = math.atan2 (ay, math.sqrt( az *  az  +ax * ax)) * 180 / math.pi
+    angleAccY = math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * -180 / math.pi
+    angleAccZ = math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi
     
    # angleAccX =  0.98 * angleX +0.1 * (math.atan2 ( ay , math.sqrt( az *  az  +ax * ax)) * 180 / math.pi)
    # angleAccY =  0.98 * angleY +0.1 * (math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * 180 / math.pi)
    # angleAccZ =  0.98 * angleZ +0.1 * (math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi)
-
+    angleX = 0.92*angleTX + 0.08*angleAccX
+    angleY = 0.92*angleTY + 0.08*angleAccY
+    angleZ = 0.92*angleTZ + 0.08*angleAccZ
     
 
     #  raw temp bits
