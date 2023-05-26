@@ -61,12 +61,12 @@ def mpu6050_conv():
     angleTY = 0
     angleTZ = 0
   
-    currenttime = 0
-    elapsedtime = 0
-    previoustime = 0
+   # currenttime = 0
+   # elapsedtime = 0
+   # previoustime = 0
 
-    currenttime = time.time()
-    elapsedtime = currenttime - previoustime
+   # currenttime = time.time()
+   # elapsedtime = currenttime - previoustime
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
     acc_y = read_raw_bits(ACCEL_YOUT_H)
@@ -129,7 +129,7 @@ def mpu6050_conv():
     angleTY = angleY
     angleTZ = angleZ
     
-    previoustime = currenttime 
+   # previoustime = currenttime 
 
     return  angleX, angleY,angleZ,gyro_x,gyro_y, gyro_z
 
