@@ -66,6 +66,7 @@ def mpu6050_conv():
     previoustime = 0
 
     currenttime = time.time()
+    print(currenttime)
     elapsedtime = currenttime - previoustime
      
      
