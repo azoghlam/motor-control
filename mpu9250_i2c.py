@@ -55,10 +55,13 @@ def mpu6050_conv():
     acc_y = read_raw_bits(ACCEL_YOUT_H)
     acc_z = read_raw_bits(ACCEL_ZOUT_H)
 
-    
-    angleAccX = math.atan2 (acc_y, math.sqrt( acc_z *  acc_z  +acc_x * acc_x)) * 180 / math.pi
-    angleAccY = math.atan2 (acc_x, math.sqrt( acc_z  *  acc_z  + acc_y * acc_y)) * 180 / math.pi
-    angleAccZ = math.atan2 (math.sqrt( acc_x  *  acc_x  + acc_y * acc_y), acc_z) * 180 / math.pi
+    ax = acc_x/16384.0
+    ay = acc_y/16384.0
+    az = acc_z/16384.0
+
+    angleAccX = math.atan2 (acc_y, math.sqrt( az *  az  +ax * ax)) * 180 / math.pi
+    angleAccY = math.atan2 (acc_x, math.sqrt( az *  az + ay * ay)) * 180 / math.pi
+    angleAccZ = math.atan2 (math.sqrt( ax  *  ax + ay * ay), az) * 180 / math.pi
     
    # angleX = 0.98*angleX + 0.02*angleAccX
    # angleY = 0.98*angleY + 0.02*angleAccY
@@ -73,9 +76,9 @@ def mpu6050_conv():
         
     
     #convert to acceleration in g and gyro dps
-    a_x = (acc_x/(2.0**15.0))*accel_sens
-    a_y = (acc_y/(2.0**15.0))*accel_sens
-    a_z = (acc_z/(2.0**15.0))*accel_sens
+   # a_x = (acc_x/(2.0**15.0))*accel_sens
+   # a_y = (acc_y/(2.0**15.0))*accel_sens
+   # a_z = (acc_z/(2.0**15.0))*accel_sens
 
     w_x = (gyro_x/(2.0**15.0))*gyro_sens
     w_y = (gyro_y/(2.0**15.0))*gyro_sens
@@ -88,7 +91,7 @@ def mpu6050_conv():
     #angleAccY = angleY
 
 
-    return  angleAccX,angleAccY, angleAccZ
+    return  angleAccX,angleAccY,angleAccZ
 
 
 
