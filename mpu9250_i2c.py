@@ -194,14 +194,13 @@ def AK8963_conv():
    # m_y = (mag_y/(2.0**15.0))*mag_sens
    # m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    heading =  math.atan2(  magx,   magy) * (180/ math.pi) 
+    heading =  math.atan2(   mag_x ,   mag_y) * (180/ math.pi) 
 
     
     return mag_x, mag_y, mag_z,heading
 
 
-def low_pass_filter(prev_value, new_value):
-    return 0.90 * prev_value + 0.1 * new_value    
+
 
 
 
