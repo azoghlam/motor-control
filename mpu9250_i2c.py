@@ -176,12 +176,18 @@ def AK8963_conv():
 #raw magnetometer bits
    
     loop_count = 0
+    angleTX = 0
+    angleTY = 0
+    
+   
     while 1:
 
         mag_x = AK8963_reader(HXH)
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
-    
+
+        angleX = 0.92*angleTX + 0.08* mag_x
+        angleY = 0.92*angleTY + 0.08* mag_y
        
         # the next line is needed for AK8963
         if bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))=='0b10000':
@@ -194,10 +200,12 @@ def AK8963_conv():
    # m_y = (mag_y/(2.0**15.0))*mag_sens
    # m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    heading =  math.atan2(   mag_x ,   mag_y) * (180/ math.pi) 
+    heading =  math.atan2(   angleX ,   angleY) * (180/ math.pi) 
+
+   
 
     
-    return mag_x, mag_y, mag_z,heading
+    return angleX, angleY, mag_z,heading
 
 
 
