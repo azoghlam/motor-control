@@ -178,7 +178,8 @@ def AK8963_conv():
     loop_count = 0
     angleMTX = 0
     angleMTY = 0
-    
+    angleMX  = 0
+    angleMY  = 0
    
     while 1:
 
