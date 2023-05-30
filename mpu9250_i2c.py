@@ -166,7 +166,7 @@ def AK8963_reader(register):
     return value
 
 def AK8963_conv():
-    # raw magnetometer bits
+#raw magnetometer bits
 
     loop_count = 0
     while 1:
@@ -179,12 +179,13 @@ def AK8963_conv():
             break
         loop_count+=1
         
+        
     #convert to acceleration in g and gyro dps
     m_x = (mag_x/(2.0**15.0))*mag_sens
     m_y = (mag_y/(2.0**15.0))*mag_sens
     m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    heading = - math.atan2(  m_y, m_x) * (180/ math.pi) 
+    heading = math.atan2(  m_y, m_x) * (180/ math.pi) 
 
     return m_x,m_y,m_z,heading
     
