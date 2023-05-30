@@ -199,7 +199,7 @@ def AK8963_conv():
    # m_y = (mag_y/(2.0**15.0))*mag_sens
    # m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    heading =  math.atan2(  filtered_magx,   filtered_magy) * (180/ math.pi) 
+    heading =  math.atan2(  magx,   magy) * (180/ math.pi) 
     return magx, magy, mag_z,heading
 
 
