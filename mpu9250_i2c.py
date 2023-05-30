@@ -179,9 +179,6 @@ def AK8963_conv():
     loop_count = 0
     while 1:
 
-       
-       
-
         mag_x = AK8963_reader(HXH)
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
