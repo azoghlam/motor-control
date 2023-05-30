@@ -6,7 +6,7 @@ import smbus2
 import math
 import time
 
-from mpu9250 import MPU9250
+
 
 
     
