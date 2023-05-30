@@ -185,8 +185,8 @@ def AK8963_conv():
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
     
-        filtered_magx = low_pass_filter(filtered_magx, magx_new)
-        filtered_magy = low_pass_filter(filtered_magy, magy_new)
+        filtered_magx = low_pass_filter(filtered_magx, mag_x)
+        filtered_magy = low_pass_filter(filtered_magy,  mag_y)
 
         # the next line is needed for AK8963
         if bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))=='0b10000':
