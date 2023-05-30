@@ -187,7 +187,7 @@ def AK8963_conv():
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
 
-        angleMX = 0.98*angleMTX + 0.08* mag_x
+        angleMX = 0.92*angleMTX + 0.08* mag_x
         angleMY = 0.92*angleMTY + 0.08* mag_y
        
         # the next line is needed for AK8963
