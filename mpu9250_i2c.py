@@ -187,8 +187,8 @@ def AK8963_conv():
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
 
-        angleMX = 0.9*angleMTX + 0.1* mag_x
-        angleMY = 0.9*angleMTY + 0.1* mag_y
+        angleMX = 0.95*angleMTX + 0.05* mag_x
+        angleMY = 0.9*angleMTY + 0.05* mag_y
        
         # the next line is needed for AK8963
         if bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))=='0b10000':
