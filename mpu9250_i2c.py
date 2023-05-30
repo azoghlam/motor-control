@@ -181,13 +181,13 @@ def AK8963_conv():
         
         
     #convert to acceleration in g and gyro dps
-    m_x = (mag_x/(2.0**15.0))*mag_sens
-    m_y = (mag_y/(2.0**15.0))*mag_sens
-    m_z = (mag_z/(2.0**15.0))*mag_sens
+   # m_x = (mag_x/(2.0**15.0))*mag_sens
+   # m_y = (mag_y/(2.0**15.0))*mag_sens
+   # m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    heading = math.atan2(  m_y, m_x) * (180/ math.pi) 
+    heading = math.atan2(  mag_y,  mag_x) * (180/ math.pi) 
 
-    return m_x,m_y,m_z,heading
+    return mag_x, mag_y, mag_z,heading
     
 # MPU6050 Registers
 MPU6050_ADDR = 0x68
