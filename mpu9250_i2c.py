@@ -6,6 +6,9 @@ import smbus2
 import math
 import time
 
+from mpu9250 import MPU9250
+
+
     
 def MPU6050_start():
     # alter sample rate (stability)
@@ -167,12 +170,19 @@ def AK8963_reader(register):
 
 def AK8963_conv():
 #raw magnetometer bits
-
+    magx_new = 0
+    magy_new = 0
     loop_count = 0
     while 1:
         mag_x = AK8963_reader(HXH)
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
+    
+        filtered_magx = low_pass_filter(filtered_magx, magx_new)
+        filtered_magy = low_pass_filter(filtered_magy, magy_new)
+
+
+
 
         # the next line is needed for AK8963
         if bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))=='0b10000':
@@ -185,7 +195,7 @@ def AK8963_conv():
    # m_y = (mag_y/(2.0**15.0))*mag_sens
    # m_z = (mag_z/(2.0**15.0))*mag_sens
 
-    heading =  math.atan2(   mag_x,  mag_y) * (180/ math.pi) 
+    heading =  math.atan2(  filtered_magx,   filtered_magy) * (180/ math.pi) 
     return mag_x, mag_y, mag_z,heading
 
 
