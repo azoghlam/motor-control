@@ -174,7 +174,8 @@ def low_pass_filter(prev_value, new_value):
 
 def AK8963_conv():
 #raw magnetometer bits
-   
+    filtered_magx = 0
+    filtered_magy = 0
     magx = 0
     magy = 0
     loop_count = 0
