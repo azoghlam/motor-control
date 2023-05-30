@@ -176,6 +176,8 @@ def AK8963_conv():
 #raw magnetometer bits
     magx_new = 0
     magy_new = 0
+    filtered_magx = 0
+    filtered_magy = 0
     loop_count = 0
     while 1:
 
