@@ -175,8 +175,8 @@ def low_pass_filter(prev_value, new_value):
 def AK8963_conv():
 #raw magnetometer bits
    
-    filtered_magx = 0
-    filtered_magy = 0
+    magx = 0
+    magy = 0
     loop_count = 0
     while 1:
 
@@ -184,8 +184,8 @@ def AK8963_conv():
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
     
-        filtered_magx = low_pass_filter(filtered_magx, mag_x)
-        filtered_magy = low_pass_filter(filtered_magy,  mag_y)
+        magx = low_pass_filter(filtered_magx, mag_x)
+        magy = low_pass_filter(filtered_magy,  mag_y)
 
         # the next line is needed for AK8963
         if bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))=='0b10000':
@@ -199,7 +199,7 @@ def AK8963_conv():
    # m_z = (mag_z/(2.0**15.0))*mag_sens
 
     heading =  math.atan2(  filtered_magx,   filtered_magy) * (180/ math.pi) 
-    return filtered_magx, filtered_magy, mag_z,heading
+    return magx, magy, mag_z,heading
 
 
 def low_pass_filter(prev_value, new_value):
