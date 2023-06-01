@@ -4,7 +4,7 @@
 
 import  smbus2 
 import  time
-
+import math
 
 def MPU6050_start():
     # alter sample rate (stability)
@@ -73,7 +73,9 @@ def mpu6050_conv():
     w_y = (gyro_y/(2.0**15.0))*gyro_sens
     w_z = (gyro_z/(2.0**15.0))*gyro_sens
 
-##    temp = ((t_val)/333.87)+21.0 # uncomment and add below in return
+    #accfilter = 0.96*prevfilt +
+
+
     return a_x,a_y,a_z,w_x,w_y,w_z
 
 def AK8963_start():
@@ -98,8 +100,9 @@ def AK8963_reader(register):
 
 def AK8963_conv():
     # raw magnetometer bits
-
     loop_count = 0
+    heading = 0
+
     while 1:
         mag_x = AK8963_reader(HXH)
         mag_y = AK8963_reader(HYH)
@@ -114,6 +117,9 @@ def AK8963_conv():
     m_x = (mag_x/(2.0**15.0))*mag_sens
     m_y = (mag_y/(2.0**15.0))*mag_sens
     m_z = (mag_z/(2.0**15.0))*mag_sens
+
+    heading =  math.atan2(  m_x ,  m_y ) * (180/ math.pi) 
+
 
     return m_x,m_y,m_z
     
