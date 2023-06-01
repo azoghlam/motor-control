@@ -7,9 +7,9 @@ AK8963_start()
 
 print('recording data')
 while 1:
-    print('mpu')
+    # print('mpu')
     ax,ay,az,wx,wy,wz= mpu6050_conv() # read and convert mpu6050 data
-    print("ak")
+    # print("ak")
     mx,my,mz,mt = AK8963_conv() # read and convert AK8963 magnetometer data
     # try:
         
