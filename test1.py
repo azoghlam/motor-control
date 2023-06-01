@@ -26,7 +26,10 @@ while 1:
     except:
         continue
     
-    sio.emit('mpu9265',ax,ay,az, wx,wy,wz, mx,my,mz)
+    sio.emit('gyro',ax,ay,az)
+    sio.emit('acc',wx,wy,wz)
+    sio.emit('mag',mx,my,mz)
+    sio.emit('heading',heading)
     # print('{}'.format('-'*30))
     # print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z {2:2.2f}= '.format(ax,ay,az))
     # print('gyro [dps]:  x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(wx,wy,wz))
