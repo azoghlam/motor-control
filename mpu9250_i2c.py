@@ -120,11 +120,10 @@ def AK8963_conv():
     
     if (math.atan2(m_y, m_x) >= 0) :
 
-      heading = math.atan2(m_y, m_x) * (180 / math.pi) +90 
-      
+      heading = math.atan2(m_y, m_x) * (180 / math.pi) 
     else  :
 
-          heading = (math.atan2(m_y, m_x) + 2 * math.pi) * (180 / math.pi) + 90 
+     heading = (math.atan2(m_y, m_x) + 2 * math.pi) * (180 / math.pi) 
       
     
     #heading =  math.atan2( m_x, m_y ) * (180/ math.pi) 
