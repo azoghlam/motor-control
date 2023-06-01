@@ -26,7 +26,9 @@ def initLoop ():
         except:
             continue
         
-        aX,aY,aZ = str(ax,ay,az)
+        aX,aY,aZ = str(ax)
+        aY = str(ay)
+        aZ = str(az)
         sio.emit('gyro',' '+aX+','+aY+','+aZ)
         # sio.emit('acc',wx,wy,wz)
         # sio.emit('mag',mx,my,mz)
