@@ -4,8 +4,6 @@
 
 import  smbus,time
 
-bus = smbus.SMBus(1)
-
 
 def MPU6050_start():
     # alter sample rate (stability)
