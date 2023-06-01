@@ -173,6 +173,8 @@ def AK8963_reader(register):
 def AK8963_conv():
     global angleMX
     global angleMY
+    global angleMTX
+    global angleMTY
 #raw magnetometer bits
     loop_count = 0
     print("RUNNING CONV")
