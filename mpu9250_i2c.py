@@ -11,6 +11,9 @@ import time
 angleX = 0
 angleY = 0
 angleZ = 0
+angleTX, angleTY,angleTZ = 0
+   
+
 
 angleMTX = 0
 angleMTY = 0
@@ -68,10 +71,7 @@ def mpu6050_conv():
     yangle = 0
     zangle = 0
 
-    angleTX = angleX 
-    angleTY = angleY
-    angleTZ = angleZ
-   
+    
     currenttime = 0
     elapsedtime = 0
     previoustime = 0
