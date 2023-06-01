@@ -12,7 +12,7 @@ angleX = 0
 angleY = 0
 angleZ = 0
 angleTX = 0
-angleTY =0
+angleTY = 0
 angleTZ = 0
    
 angleMTX = 0
@@ -147,13 +147,7 @@ def mpu6050_conv():
 
     return angleX, angleY ,angleZ, wx, wy, wz
 
-
-
 def AK8963_start():
-    angleMTX = 0
-    angleMTY = 0
-    angleMX  = 0
-    angleMY  = 0
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
     time.sleep(0.1)
     AK8963_bit_res = 0b0001 # 0b0001 = 16-bit
@@ -177,9 +171,9 @@ def AK8963_reader(register):
 def AK8963_conv():
 #raw magnetometer bits
     loop_count = 0
-    print("this")
-    while 1:
-
+    print("RUNNING CONV")
+    while bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))!='0b10000':
+        print("looping")
         mag_x = AK8963_reader(HXH)
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
@@ -187,10 +181,10 @@ def AK8963_conv():
         angleMX = 0.92*angleMTX + 0.08* mag_x
         angleMY = 0.92*angleMTY + 0.08* mag_y
        
-        # the next line is needed for AK8963
-        if bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))=='0b10000':
-            break
-        loop_count+=1
+        # # the next line is needed for AK8963
+        # if :
+        #     break
+        # loop_count+=1
         
         
     #convert to acceleration in g and gyro dps
