@@ -17,8 +17,7 @@ angleTZ = 0
    
 angleMTX = 0
 angleMTY = 0
-angleMX  = 0
-angleMY  = 0
+
 
     
 def MPU6050_start():
@@ -169,6 +168,8 @@ def AK8963_reader(register):
 
 
 def AK8963_conv():
+    global angleMX
+    global angleMY
 #raw magnetometer bits
     loop_count = 0
     print("RUNNING CONV")
@@ -184,7 +185,7 @@ def AK8963_conv():
         # # the next line is needed for AK8963
         # if :
         #     break
-        # loop_count+=1
+        loop_count+=1
         
         
     #convert to acceleration in g and gyro dps
