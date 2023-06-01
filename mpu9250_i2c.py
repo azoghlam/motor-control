@@ -11,7 +11,9 @@ import time
 angleX = 0
 angleY = 0
 angleZ = 0
-angleTX, angleTY,angleTZ = 0
+angleTX = 0
+angleTY =0
+angleTZ = 0
    
 
 
