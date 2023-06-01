@@ -7,20 +7,20 @@ sio = socketio.Client()
 def disconnect():
     print('disconnected from server')
 
-
 sio.connect('http://192.168.2.19:3000')
 sio.wait()
 
-
 time.sleep(1) # delay necessary to allow mpu9250 to settle
-
 
 @sio.event
 def connect():
     print('connection established')
     sio.emit("ID", 'python-gyro-client')
-    print('recording data')
-    while 1:
+    # print('recording data')
+    initLoop()
+
+def initLoop ():
+     while 1:
         try:
             ax,ay,az,wx,wy,wz = mpu6050_conv() # read and convert mpu6050 data
             mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
@@ -39,6 +39,4 @@ def connect():
         # print('{}'.format('-'*30))
     
         # time.sleep(1)
-
-
 
