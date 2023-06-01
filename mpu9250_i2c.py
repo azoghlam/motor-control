@@ -176,19 +176,19 @@ def AK8963_conv():
 #raw magnetometer bits
     loop_count = 0
     print("RUNNING CONV")
-    while bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))!='0b10000':
-        print("looping")
-        mag_x = AK8963_reader(HXH)
-        mag_y = AK8963_reader(HYH)
-        mag_z = AK8963_reader(HZH)
+    # while bin(bus.read_byte_data(AK8963_ADDR,AK8963_ST2))!='0b10000':
+        # print("looping")
+    mag_x = AK8963_reader(HXH)
+    mag_y = AK8963_reader(HYH)
+    mag_z = AK8963_reader(HZH)
 
-        angleMX = 0.92*angleMTX + 0.08* mag_x
-        angleMY = 0.92*angleMTY + 0.08* mag_y
+    angleMX = 0.92*angleMTX + 0.08* mag_x
+    angleMY = 0.92*angleMTY + 0.08* mag_y
        
         # # the next line is needed for AK8963
         # if :
         #     break
-        loop_count+=1
+        # loop_count+=1
         
         
     #convert to acceleration in g and gyro dps
