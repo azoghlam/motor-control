@@ -11,9 +11,6 @@ import time
 angleX = 0
 angleY = 0
 angleZ = 0
-angleTX = 0
-angleTY = 0
-angleTZ = 0
 
 angleMTX = 0
 angleMTY = 0
@@ -70,7 +67,10 @@ def mpu6050_conv():
     xangle = 0
     yangle = 0
     zangle = 0
-   
+
+    angleTX = angleX 
+    angleTY = angleY
+    angleTZ = angleZ
    
     currenttime = 0
     elapsedtime = 0
@@ -87,13 +87,9 @@ def mpu6050_conv():
     acc_y = read_raw_bits(ACCEL_YOUT_H)
     acc_z = read_raw_bits(ACCEL_ZOUT_H)
 
-
     ax = acc_x/16384.0
     ay = acc_y/16384.0
     az = acc_z/16384.0
-
-    
-
 
     angleAccX = math.atan2 (ay, math.sqrt( az *  az  +ax * ax)) * 180 / math.pi
     angleAccY = math.atan2 (ax, math.sqrt( az *  az + ay * ay)) * -180 / math.pi
@@ -143,9 +139,9 @@ def mpu6050_conv():
 
   
     
-    angleTX = angleX
-    angleTY = angleY
-    angleTZ = angleZ
+    # angleTX = angleX
+    # angleTY = angleY
+    # angleTZ = angleZ
     
     previoustime = currenttime 
 
