@@ -1,4 +1,4 @@
-from  magnetometer import *
+from  mpu9250_i2c import *
 
 time.sleep(1) # delay necessary to allow mpu9250 to settle
 
