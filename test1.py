@@ -7,8 +7,7 @@ sio = socketio.Client()
 def disconnect():
     print('disconnected from server')
 
-sio.connect('http://192.168.2.19:3000')
-sio.wait()
+
 
 time.sleep(1) # delay necessary to allow mpu9250 to settle
 
@@ -40,3 +39,5 @@ def initLoop ():
     
         # time.sleep(1)
 
+sio.connect('http://192.168.2.19:3000')
+sio.wait()
