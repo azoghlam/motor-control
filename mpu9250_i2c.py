@@ -180,7 +180,7 @@ def low_pass_filter(prev_value, new_value):
 def AK8963_conv():
 #raw magnetometer bits
     loop_count = 0
-   
+    print("this")
     while 1:
 
         mag_x = AK8963_reader(HXH)
