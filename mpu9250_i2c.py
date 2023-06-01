@@ -101,7 +101,7 @@ def AK8963_reader(register):
 def AK8963_conv():
     # raw magnetometer bits
     loop_count = 0
-    heading = 0
+    #heading = 0
 
     while 1:
         mag_x = AK8963_reader(HXH)
