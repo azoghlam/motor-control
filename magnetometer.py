@@ -2,8 +2,8 @@
 # it will be used as the I2C controller and function harbor for the project 
 # refer to datasheet and register map for full explanation
 
-import  time
-import smbus
+import  smbus,time
+
 bus = smbus.SMBus(1)
 
 
