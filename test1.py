@@ -3,6 +3,8 @@ from  mpu9250_i2c import *
 import socketio
 sio = socketio.Client()
 
+
+
 @sio.event
 def disconnect():
     print('disconnected from server')
@@ -26,10 +28,7 @@ def initLoop ():
         # except:
             # continue
         
-        sio.emit('gyro',ax,ay,az)
-        sio.emit('acc',wx,wy,wz)
-        sio.emit('mag',mx,my,mz)
-        sio.emit('heading',heading)
+        sio.emit('gyro',ax)
         # print('{}'.format('-'*30))
         # print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z {2:2.2f}= '.format(ax,ay,az))
         # print('gyro [dps]:  x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(wx,wy,wz))
