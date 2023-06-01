@@ -26,7 +26,9 @@ def initLoop ():
         except:
             continue
         
-        sio.emit('gyro',ax)
+        aX = str(ax)
+        aY= str(ay)
+        sio.emit('gyro',aX,aY)
         sio.emit('gyro',ay)
         sio.emit('gyro',az)
         # sio.emit('acc',wx,wy,wz)
