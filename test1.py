@@ -26,7 +26,7 @@ def initLoop ():
         except:
             continue
         
-        sio.emit('gyro',ax)
+        sio.emit('gyro',''+ax+','+ay+','+az)
         # sio.emit('acc',wx,wy,wz)
         # sio.emit('mag',mx,my,mz)
         # sio.emit('heading',heading)
