@@ -29,7 +29,16 @@ def initLoop ():
         aX = str(ax)
         aY = str(ay)
         aZ = str(az)
-        sio.emit('gyro',' '+aX+','+aY+','+aZ)
+        wX = str(wx)
+        wY = str(wy)
+        wZ = str(wz)
+        mX = str(mx)
+        mY = str(my)
+        mZ = str(mz)
+        h = str(heading)
+        sio.emit('gyro',' '+aX+','+aY+','+aZ
+                 +','+wX+','+wY+','+wZ
+                 +','+mX+','+mY+','+mZ+','+h)
         # sio.emit('acc',wx,wy,wz)
         # sio.emit('mag',mx,my,mz)
         # sio.emit('heading',heading)
