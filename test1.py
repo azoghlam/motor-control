@@ -19,12 +19,12 @@ def connect():
     initLoop()
 
 def initLoop ():
-     while 1:
-        try:
-            ax,ay,az,wx,wy,wz = mpu6050_conv() # read and convert mpu6050 data
-            mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
-        except:
-            continue
+    #  while 1:
+    #     try:
+        ax,ay,az,wx,wy,wz = mpu6050_conv() # read and convert mpu6050 data
+        mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
+        # except:
+            # continue
         
         sio.emit('gyro',ax,ay,az)
         sio.emit('acc',wx,wy,wz)
