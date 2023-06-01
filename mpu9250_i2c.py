@@ -121,7 +121,7 @@ def AK8963_conv():
     heading =  math.atan2(  m_x ,  m_y ) * (180/ math.pi) 
 
 
-    return m_x,m_y,m_z
+    return m_x,m_y,m_z, heading
     
 # MPU6050 Registers
 MPU6050_ADDR = 0x68
