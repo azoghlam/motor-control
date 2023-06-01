@@ -147,6 +147,8 @@ def mpu6050_conv():
     return angleX, angleY ,angleZ, wx, wy, wz
 
 def AK8963_start():
+    angleMX = 0
+    angleMY = 0
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
     time.sleep(0.1)
     AK8963_bit_res = 0b0001 # 0b0001 = 16-bit
@@ -154,6 +156,7 @@ def AK8963_start():
     AK8963_mode = (AK8963_bit_res <<4)+AK8963_samp_rate # bit conversion
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,AK8963_mode)
     time.sleep(0.1)
+    return
     
 def AK8963_reader(register):
     # read magnetometer values
