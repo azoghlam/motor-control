@@ -2,6 +2,9 @@ from mpu9250_i2c import *
 
 time.sleep(1) # delay necessary to allow mpu9250 to settle
 
+MPU6050_start()
+AK8963_start()
+
 print('recording data')
 while 1:
     print('mpu')
