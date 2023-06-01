@@ -118,13 +118,13 @@ def AK8963_conv():
     m_y = (mag_y/(2.0**15.0))*mag_sens
     m_z = (mag_z/(2.0**15.0))*mag_sens
     
-    if (math.atan2( m_x, m_y) >= 0) :
+    if (math.atan2(m_y, m_x) >= 0) :
 
-      heading = math.atan2(m_x, m_y) * (180 / math.pi)
+      heading = math.atan2(m_y, m_x) * (180 / math.pi)
       
     else  :
 
-          heading = (math.atan2(m_x, m_y) + 2 * math.pi) * (180 / math.pi)
+          heading = (math.atan2(m_y, m_x) + 2 * math.pi) * (180 / math.pi)
       
     
     #heading =  math.atan2( m_x, m_y ) * (180/ math.pi) 
