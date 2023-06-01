@@ -15,8 +15,6 @@ angleTX = 0
 angleTY =0
 angleTZ = 0
    
-
-
 angleMTX = 0
 angleMTY = 0
 angleMX  = 0
@@ -152,6 +150,10 @@ def mpu6050_conv():
 
 
 def AK8963_start():
+    angleMTX = 0
+    angleMTY = 0
+    angleMX  = 0
+    angleMY  = 0
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
     time.sleep(0.1)
     AK8963_bit_res = 0b0001 # 0b0001 = 16-bit
@@ -170,9 +172,6 @@ def AK8963_reader(register):
     if(value > 32768):
         value -= 65536
     return value
-def low_pass_filter(prev_value, new_value):
-        return 0.85 * prev_value + 0.15 * new_value  
-
 
 
 def AK8963_conv():
