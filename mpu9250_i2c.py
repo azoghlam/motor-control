@@ -8,6 +8,17 @@ import time
 
 
 
+angleX = 0
+angleY = 0
+angleZ = 0
+angleTX = 0
+angleTY = 0
+angleTZ = 0
+
+angleMTX = 0
+angleMTY = 0
+angleMX  = 0
+angleMY  = 0
 
     
 def MPU6050_start():
@@ -60,13 +71,7 @@ def mpu6050_conv():
     yangle = 0
     zangle = 0
    
-    angleX = 0
-    angleY = 0
-    angleZ = 0
-    angleTX = 0
-    angleTY = 0
-    angleTZ = 0
-  
+   
     currenttime = 0
     elapsedtime = 0
     previoustime = 0
@@ -174,12 +179,7 @@ def low_pass_filter(prev_value, new_value):
 
 def AK8963_conv():
 #raw magnetometer bits
-   
     loop_count = 0
-    angleMTX = 0
-    angleMTY = 0
-    angleMX  = 0
-    angleMY  = 0
    
     while 1:
 
