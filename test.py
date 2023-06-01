@@ -12,7 +12,10 @@ while 1:
     # print("ak")
     mx,my,mz,mt = AK8963_conv() # read and convert AK8963 magnetometer data
     # try:
-        
+    test = MPU9250(ax,ay,az)
+
+    print(test)
+
     # except:
     #     continue
     

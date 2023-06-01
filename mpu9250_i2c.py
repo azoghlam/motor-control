@@ -6,17 +6,24 @@ import smbus2
 import math
 import time
 
+class MPU9250:
+    angleX = 0
+    angleY = 0
+    angleZ = 0
+    angleTX = 0
+    angleTY = 0
+    angleTZ = 0
+    
+    angleMTX = 0
+    angleMTY = 0
 
+    def __init__(self, angleX, angleY, angleZ):
+        self.angleX = angleX
+        self.angleY = angleY
+        self.angleZ = angleZ
 
-angleX = 0
-angleY = 0
-angleZ = 0
-angleTX = 0
-angleTY = 0
-angleTZ = 0
-   
-angleMTX = 0
-angleMTY = 0
+    def __str__(self):
+        return f'Angle X is: {self.angleX}\nAngle Y is: {self.angleY}\nAngle Z is: {self.angleZ}'
 
 
     
