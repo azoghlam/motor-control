@@ -93,7 +93,7 @@ def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
     angleMTY = aY
     angleMTZ = aZ
 
-    return angleAccX, angleAccY, angleAccZ, wX, wY,wZ
+    return aX, aY, aZ, wX, wY,wZ
 
 def AK8963_start():
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
