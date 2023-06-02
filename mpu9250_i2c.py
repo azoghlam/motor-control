@@ -81,8 +81,8 @@ def mpu6050_conv():
 
 
     angleAccX = math.atan2 ( a_y, math.sqrt ( a_z *  a_z  + a_x * a_x)) * (180 / math.pi)
-    angleAccY = math.atan2 (a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (-180 / math.pi)
-    angleAccZ = math.atan2 (math.sqrt( a_x  *  a_x + a_y * a_y), a_z) * (180 / math.pi)
+    angleAccY = math.atan2 (- a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (180 / math.pi)
+    angleAccZ = math.atan2 (math.sqrt( a_x *  a_x + a_y * a_y), a_z) * (180 / math.pi)
 
     # aX = 0.90*angleMTX + 0.1* angleAccX
     # aY = 0.90*angleMTY + 0.1* angleAccY
@@ -92,7 +92,10 @@ def mpu6050_conv():
     wY = (gyro_y/(2.0**15.0))*gyro_sens
     wZ = (gyro_z/(2.0**15.0))*gyro_sens
 
-
+    # xangle =  0.96* ( (xangle +  wx) *  elapsedtime ) + 0.04* angleX 
+    # yangle =  0.96* ( (yangle +  wy) *  elapsedtime ) + 0.04* angleY   
+    # zangle =  0.96* ( (zangle +  wz) *  elapsedtime ) + 0.04* angleZ
+  
     return angleAccX , angleAccY, angleAccZ, wX, wY,wZ
 
 def AK8963_start():
