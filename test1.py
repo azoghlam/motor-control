@@ -17,9 +17,15 @@ from  mpu9250_i2c import *
 #     sio.emit("ID", 'python-gyro-client')
 #     # print('recording data')
 #     initLoop()
-ax,ay,az = 0
-wx,wy,wz = 0
-mx,my,mz = 0
+ax = 0
+ay = 0
+az = 0
+wx =0
+wy =0
+wz = 0
+mx =0
+my =0
+mz = 0
 heading = 0
 def initLoop ():
      
