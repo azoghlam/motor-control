@@ -17,11 +17,16 @@ from  mpu9250_i2c import *
 #     sio.emit("ID", 'python-gyro-client')
 #     # print('recording data')
 #     initLoop()
-
+ax,ay,az = 0
+wx,wy,wz = 0
+mx,my,mz = 0
+heading = 0
 def initLoop ():
+     
+
      while 1:
         try:
-            ax,ay,angleAccZ,wx,wy,wz = mpu6050_conv() # read and convert mpu6050 data
+            ax,ay,az,wx,wy,wz = mpu6050_conv(ax,ay,az, wx,wy,wz) # read and convert mpu6050 data
             mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
         except:
             continue
@@ -30,7 +35,7 @@ def initLoop ():
         # sio.emit('mag',mx,my,mz)
         # sio.emit('heading',heading)
         # print('{}'.format('-'*30))
-        print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z =  {2:2.2f} '.format(ax,ay,angleAccZ))
+        print('accel [g]: x = {0:2.2f}, y = {1:2.2f}, z =  {2:2.2f} '.format(ax,ay,az))
         print('gyro [dps]:  x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(wx,wy,wz))
         print('mag [uT]:   x = {0:2.2f}, y = {1:2.2f}, z = {2:2.2f}'.format(mx,my,mz))
         print('heading:   x = {0:2.2f}'.format(heading))

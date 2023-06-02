@@ -6,6 +6,9 @@ import  smbus2
 import  time
 import math
 
+
+
+
 def MPU6050_start():
     # alter sample rate (stability)
     samp_rate_div = 0 # sample rate = 8 kHz/(1+samp_rate_div)
@@ -52,8 +55,11 @@ def read_raw_bits(register):
 
 
 
-def mpu6050_conv():
-    
+def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
+
+    angleMTX = aX
+    angleMTY = aY
+    angleMTZ = aZ
 
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
@@ -73,23 +79,19 @@ def mpu6050_conv():
     a_y = (acc_y/(2.0**15.0))*accel_sens
     a_z = (acc_z/(2.0**15.0))*accel_sens
 
-    w_x = (gyro_x/(2.0**15.0))*gyro_sens
-    w_y = (gyro_y/(2.0**15.0))*gyro_sens
-    w_z = (gyro_z/(2.0**15.0))*gyro_sens
+    wX = (gyro_x/(2.0**15.0))*gyro_sens
+    wY = (gyro_y/(2.0**15.0))*gyro_sens
+    wZ = (gyro_z/(2.0**15.0))*gyro_sens
 
     angleAccX = math.atan2 ( a_y, math.sqrt ( a_z *  a_z  + a_x * a_x)) * (180 / math.pi)
     angleAccY = math.atan2 (a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (-180 / math.pi)
     angleAccZ = math.atan2 (math.sqrt( a_x  *  a_x + a_y * a_y), a_z) * (180 / math.pi)
 
-    # angleMX = 0.92*angleMTX + 0.08* angleAccX
-    # angleMY = 0.92*angleMTY + 0.08* angleAccY
-    # angleMZ = 0.92*angleMTZ + 0.08* angleAccZ
+    aX = 0.92*angleMTX + 0.08* angleAccX
+    aY = 0.92*angleMTY + 0.08* angleAccY
+    aZ = 0.92*angleMTZ + 0.08* angleAccZ
 
-    # angleMTX = angleMX
-    # angleMTY = angleMY
-    # angleMTZ = angleMZ
-
-    return angleAccX,angleAccY,angleAccZ,w_x,w_y,w_z
+    return aX, aY, aZ, wX, wY,wZ
 
 def AK8963_start():
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
