@@ -56,6 +56,8 @@ def read_raw_bits(register):
 
 
 def mpu6050_conv():
+    
+    previous = time.time()
 
     # angleMTX = aX
     # angleMTY = aY
@@ -92,10 +94,15 @@ def mpu6050_conv():
     wY = (gyro_y/(2.0**15.0))*gyro_sens
     wZ = (gyro_z/(2.0**15.0))*gyro_sens
 
-    # xangle =  0.96* ( (xangle +  wx) *  elapsedtime ) + 0.04* angleX 
-    # yangle =  0.96* ( (yangle +  wy) *  elapsedtime ) + 0.04* angleY   
-    # zangle =  0.96* ( (zangle +  wz) *  elapsedtime ) + 0.04* angleZ
-  
+
+    # xangle =  0.96* ( (xangle +  wX) *  elapsedtime ) + 0.04* angleX 
+    # yangle =  0.96* ( (yangle +  wY) *  elapsedtime ) + 0.04* angleY   
+    # zangle =  0.96* ( (zangle +  wZ) *  elapsedtime ) + 0.04* angleZ
+    
+    current = time.time()
+   
+    elapsedtime = current - previous
+
     return angleAccX , angleAccY, angleAccZ, wX, wY,wZ
 
 def AK8963_start():
