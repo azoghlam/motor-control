@@ -73,10 +73,12 @@ def mpu6050_conv():
     w_y = (gyro_y/(2.0**15.0))*gyro_sens
     w_z = (gyro_z/(2.0**15.0))*gyro_sens
 
-    #accfilter = 0.96*prevfilt +
+    angleAccX = math.atan2 ( a_y, math.sqrt ( a_z *  a_z  + a_x * a_x)) * (180 / math.pi)
+    angleAccY = math.atan2 (a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (-180 / math.pi)
+    angleAccZ = math.atan2 (math.sqrt( a_x  *  a_x + a_y * a_y), a_z) * (180 / math.pi)
 
 
-    return a_x,a_y,a_z,w_x,w_y,w_z
+    return angleAccX,angleAccY,angleAccZ,w_x,w_y,w_z
 
 def AK8963_start():
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
