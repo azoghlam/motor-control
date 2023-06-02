@@ -55,11 +55,11 @@ def read_raw_bits(register):
 
 
 
-def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
+def mpu6050_conv():
 
-    angleMTX = aX
-    angleMTY = aY
-    angleMTZ = aZ
+    # angleMTX = aX
+    # angleMTY = aY
+    # angleMTZ = aZ
 
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
@@ -84,16 +84,16 @@ def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
     angleAccY = math.atan2 (a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (-180 / math.pi)
     angleAccZ = math.atan2 (math.sqrt( a_x  *  a_x + a_y * a_y), a_z) * (180 / math.pi)
 
-    aX = 0.90*angleMTX + 0.1* angleAccX
-    aY = 0.90*angleMTY + 0.1* angleAccY
-    aZ = 0.90*angleMTZ + 0.1* angleAccZ
+    # aX = 0.90*angleMTX + 0.1* angleAccX
+    # aY = 0.90*angleMTY + 0.1* angleAccY
+    # aZ = 0.90*angleMTZ + 0.1* angleAccZ
     
     wX = (gyro_x/(2.0**15.0))*gyro_sens
     wY = (gyro_y/(2.0**15.0))*gyro_sens
     wZ = (gyro_z/(2.0**15.0))*gyro_sens
 
 
-    return aX , aY, aZ, wX, wY,wZ
+    return angleAccX , angleAccY, angleAccZ, wX, wY,wZ
 
 def AK8963_start():
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)

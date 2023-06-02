@@ -19,21 +19,11 @@ from  mpu9250_i2c import *
 #     initLoop()
 
 def initLoop ():
-    ax = 0
-    ay = 0
-    az = 0
-    wx =0
-    wy =0
-    wz = 0
-    mx =0
-    my =0
-    mz = 0
-    heading = 0
 
 
     while 1:
         # try:
-        ax,ay,az,wx,wy,wz = mpu6050_conv(ax,ay,az, wx,wy,wz) # read and convert mpu6050 data
+        ax,ay,az,wx,wy,wz = mpu6050_conv() # read and convert mpu6050 data
         mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
         # except:
             # continue
