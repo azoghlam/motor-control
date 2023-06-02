@@ -57,9 +57,7 @@ def read_raw_bits(register):
 
 def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
 
-    angleMTX = aX
-    angleMTY = aY
-    angleMTZ = aZ
+  
 
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
@@ -90,6 +88,10 @@ def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
     aX = 0.85*angleMTX + 0.15* angleAccX
     aY = 0.85*angleMTY + 0.15* angleAccY
     aZ = 0.85*angleMTZ + 0.15* angleAccZ
+
+    angleMTX = aX
+    angleMTY = aY
+    angleMTZ = aZ
 
     return angleAccX, angleAccY, angleAccZ, wX, wY,wZ
 
