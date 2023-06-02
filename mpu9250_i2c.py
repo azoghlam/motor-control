@@ -79,9 +79,6 @@ def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
     a_y = (acc_y/(2.0**15.0))*accel_sens
     a_z = (acc_z/(2.0**15.0))*accel_sens
 
-    wX = (gyro_x/(2.0**15.0))*gyro_sens
-    wY = (gyro_y/(2.0**15.0))*gyro_sens
-    wZ = (gyro_z/(2.0**15.0))*gyro_sens
 
     angleAccX = math.atan2 ( a_y, math.sqrt ( a_z *  a_z  + a_x * a_x)) * (180 / math.pi)
     angleAccY = math.atan2 (a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (-180 / math.pi)
@@ -90,7 +87,10 @@ def mpu6050_conv(aX,aY,aZ,wX,wY,wZ):
     aX = 0.90*angleMTX + 0.1* angleAccX
     aY = 0.90*angleMTY + 0.1* angleAccY
     aZ = 0.90*angleMTZ + 0.1* angleAccZ
-
+    
+    wX = (gyro_x/(2.0**15.0))*gyro_sens
+    wY = (gyro_y/(2.0**15.0))*gyro_sens
+    wZ = (gyro_z/(2.0**15.0))*gyro_sens
 
 
     return aX, aY, aZ, wX, wY,wZ
