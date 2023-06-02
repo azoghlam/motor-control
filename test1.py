@@ -31,11 +31,11 @@ def initLoop ():
      
 
      while 1:
-        try:
-            ax,ay,az,wx,wy,wz = mpu6050_conv(ax,ay,az, wx,wy,wz) # read and convert mpu6050 data
-            mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
-        except:
-            continue
+        # try:
+        ax,ay,az,wx,wy,wz = mpu6050_conv(ax,ay,az, wx,wy,wz) # read and convert mpu6050 data
+        mx,my,mz,heading = AK8963_conv() # read and convert AK8963 magnetometer data
+        # except:
+            # continue
         
         # sio.emit('acc',wx,wy,wz)
         # sio.emit('mag',mx,my,mz)
