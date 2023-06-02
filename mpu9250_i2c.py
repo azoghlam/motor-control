@@ -77,8 +77,16 @@ def mpu6050_conv():
     angleAccY = math.atan2 (a_x, math.sqrt( a_z *  a_z + a_y * a_y)) * (-180 / math.pi)
     angleAccZ = math.atan2 (math.sqrt( a_x  *  a_x + a_y * a_y), a_z) * (180 / math.pi)
 
+    angleMX = 0.92*angleMTX + 0.08* angleAccX
+    angleMY = 0.92*angleMTY + 0.08* angleAccY
+    angleMZ = 0.92*angleMTZ + 0.08* angleAccZ
 
-    return angleAccX,angleAccY,angleAccZ,w_x,w_y,w_z
+    angleMTX = angleMX
+    angleMTY = angleMY
+    angleMTZ = angleMZ
+
+
+    return angleMX,angleMY,angleMZ,w_x,w_y,w_z
 
 def AK8963_start():
     bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x00)
