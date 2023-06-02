@@ -36,7 +36,7 @@ def initLoop ():
         print('heading:   x = {0:2.2f}'.format(heading))
         print('{}'.format('-'*30))
     
-     time.sleep(1)
+        time.sleep(1)
         
         
         
