@@ -1,22 +1,22 @@
 from  mpu9250_i2c import *
 
-#import socketio
-# sio = socketio.Client()
+import socketio
+sio = socketio.Client()
 
-# @sio.event
-# def disconnect():
-#     print('disconnected from server')
+@sio.event
+def disconnect():
+    print('disconnected from server')
 
 
 
-# time.sleep(1) # delay necessary to allow mpu9250 to settle
+time.sleep(1) # delay necessary to allow mpu9250 to settle
 
-# @sio.event
-# def connect():
-#     print('connection established')
-#     sio.emit("ID", 'python-gyro-client')
-#     # print('recording data')
-#     initLoop()
+@sio.event
+def connect():
+    print('connection established')
+    sio.emit("ID", 'python-gyro-client')
+    # print('recording data')
+    initLoop()
 
 def initLoop ():
 
@@ -57,5 +57,5 @@ initLoop ()
 #                  +','+wX+','+wY+','+wZ
 #                  +','+mX+','+mY+','+mZ+','+h)
 
-# sio.connect('http://192.168.2.19:3000')
-# sio.wait()
+sio.connect('http://192.168.2.13:3000')
+sio.wait()
